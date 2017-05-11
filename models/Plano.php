@@ -2,7 +2,7 @@
 
 class Plano {
 
-
+	private $nombre;
 }
 
 
