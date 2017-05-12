@@ -20,9 +20,6 @@ class Datos{
 		return $mysql;
 	}
 
-
-	
-
 	function validarUsuario(){
 		if ($_SESSION['sesion']== 1){
 			header('Location: gestionProyecto.php' );

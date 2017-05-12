@@ -53,18 +53,12 @@ class Empleado extends Usuario {
 
 
 	public function registrarEmpleado(){
-	$mysql = conectar();
-	$mysql->query("CALL registrarEmpleado('$this->nombreCompleto','$this->contrasena','$this->documento','$this->telefonoFijo','$this->telefonoCelular','$this->correoElectronico','$this->direccion','$this->idRol')");
-	$mysql = Desconectar($mysql);
-	}
-
-	
-
-	public function escribir(){
-		var_dump($this);
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$mysql->query("CALL registrarEmpleado('$this->nombreCompleto','$this->contrasena','$this->documento','$this->telefonoFijo','$this->telefonoCelular','$this->correoElectronico','$this->direccion','$this->idRol')");
+		$mysql = $datos->Desconectar($mysql);
 	}
 }
 
-$Empleado = new Empleado(1,2,3,4,5,6,7);
-echo $Empleado->escribir();
- ?>
+
+?>
