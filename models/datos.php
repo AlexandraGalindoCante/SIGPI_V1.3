@@ -1,7 +1,6 @@
-
-
 <?php
 class Datos{
+
 	private $host="localhost";
 	private $password="";
 	private $user="root";
@@ -27,8 +26,7 @@ class Datos{
 	function validarUsuario(){
 		if ($_SESSION['sesion']== 1){
 			header('Location: gestionProyecto.php' );
-		}
-		
+		}	
 	}
 }
 
