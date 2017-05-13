@@ -1,5 +1,6 @@
 <?php 
 include ("Usuario.php");
+
 class Empleado extends Usuario {
 	private $idEmpleado;
 	private $nombreCompleto;
@@ -11,7 +12,6 @@ class Empleado extends Usuario {
 	private $idRol;
 	private $idUsuario;
 	
-
 	public function Empleado(){
 		$parametros = func_get_args();
 		$cantidad = func_num_args();
@@ -25,7 +25,6 @@ class Empleado extends Usuario {
 	public function _constructor1($idEmpleado){
 		$this->idEmpleado=$idEmpleado;
 	}
-
 
 	public function _constructor7($nombreCompleto,$documento,$telefonoFijo,$telefonoCelular,$correoElectronico,$direccion,$idRol){
 		$this->Usuario();
@@ -50,8 +49,6 @@ class Empleado extends Usuario {
 		$this->idEmpleado=$idEmpleado;
 	}
 
-
-
 	public function registrarEmpleado(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();
@@ -59,6 +56,5 @@ class Empleado extends Usuario {
 		$mysql = $datos->Desconectar($mysql);
 	}
 }
-
 
 ?>
