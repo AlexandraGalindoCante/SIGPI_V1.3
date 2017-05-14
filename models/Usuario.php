@@ -1,8 +1,8 @@
 <?php 
 include ("Datos.php");
 class Usuario {
-	private $idUsuario;
-	private $nombreUsuario;
+	protected $idUsuario;
+	protected $nombreUsuario;
 	protected $contrasena;
 
 	public function Usuario(){

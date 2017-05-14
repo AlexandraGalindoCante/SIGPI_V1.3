@@ -163,7 +163,7 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/actualizarEmpleado.php",
+                    url: "controladores/actualizarEmpleado.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -201,7 +201,7 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/deshabilitarEmpleado.php",
+                    url: "controladores/inhabilitarEmpleado.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         

@@ -10,7 +10,6 @@ class Empleado extends Usuario {
 	private $correoElectronico;
 	private $direccion;
 	private $idRol;
-	private $idUsuario;
 	
 	public function Empleado(){
 		$parametros = func_get_args();
@@ -53,6 +52,20 @@ class Empleado extends Usuario {
 		$datos = new Datos();
 		$mysql = $datos->conectar();
 		$mysql->query("CALL registrarEmpleado('$this->nombreCompleto','$this->contrasena','$this->documento','$this->telefonoFijo','$this->telefonoCelular','$this->correoElectronico','$this->direccion','$this->idRol')");
+		$mysql = $datos->Desconectar($mysql);
+	}
+
+	public function actualizarEmpleado(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$mysql->query("CALL actualizarEmpleado('$this->nombreCompleto','$this->documento','$this->telefonoFijo','$this->telefonoCelular','$this->correoElectronico','$this->direccion','$this->idRol','$this->idUsuario','$this->idEmpleado')");
+		$mysql = $datos->Desconectar($mysql);
+	}
+
+	public function inhabilitarEmpleado(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$mysql->query("CALL inhabilitarEmpleado('$this->idEmpleado')");
 		$mysql = $datos->Desconectar($mysql);
 	}
 }
