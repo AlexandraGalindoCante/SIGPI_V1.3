@@ -93,3 +93,24 @@ _idProyecto int
 BEGIN
     delete from  equipoTrabajo  where (Empleado_idEmpleado=_idEmpleado) && ( proyecto_idProyecto=_idProyecto);
 END//
+
+--Proveedor
+
+DELIMITER //
+CREATE PROCEDURE registrarProveedor(
+ _nombre VARCHAR(50),
+ _asesor VARCHAR(50),
+ _telefono VARCHAR(50),
+ _telefono VARCHAR(50),
+ _correoElectronico VARCHAR(50),
+ _direccion VARCHAR(50)
+ )
+BEGIN
+    INSERT INTO Usuario(nombreUsuario, contrasena, visibilidad) VALUES( _correoElectronico, _contrasena, 1);    
+    
+    INSERT INTO Empleado (nombreCompleto, documento, telefonoFijo, 
+     telefonoCelular, correoElectronico, direccion, Rol_idRol,Usuario_idUsuario, 
+     visibilidad) 
+    VALUES(_nombreCompleto, _documento, _telefonoFijo, _telefonoCelular, _correoElectronico,
+     _direccion, _idRol, (SELECT idUsuario FROM Usuario WHERE nombreUsuario = _correoElectronico), 1);
+END //
