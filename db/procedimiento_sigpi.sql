@@ -68,3 +68,28 @@ BEGIN
     inner join rol on Empleado.Rol_idRol = Rol.idRol 
     where nombreUsuario = _email && contrasena = _password;
 END //
+
+--crear equipos
+
+
+DELIMITER //
+CREATE PROCEDURE nuevoEquipo(
+_idEmpleado int,
+_idProyecto int
+)
+BEGIN
+    insert into equipoTrabajo (Empleado_idEmpleado, Proyecto_idProyecto)
+    values _idEmpleado, _idProyecto;
+END//
+
+--eliminarEquipo
+
+DELIMITER //
+CREATE PROCEDURE eliminarEquipo
+(
+_idEmpleado int,
+_idProyecto int
+)
+BEGIN
+    delete from  equipoTrabajo  where (Empleado_idEmpleado=_idEmpleado) && ( proyecto_idProyecto=_idProyecto);
+END//
