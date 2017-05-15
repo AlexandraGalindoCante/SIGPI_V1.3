@@ -24,6 +24,10 @@ class Empleado extends Usuario {
 	public function _constructor1($idEmpleado){
 		$this->idEmpleado=$idEmpleado;
 	}
+	public function _constructor2($email, $password){
+		$this->correoElectronico=$email;
+		$this->contrasena=$password;
+	}
 
 	public function _constructor7($nombreCompleto,$documento,$telefonoFijo,$telefonoCelular,$correoElectronico,$direccion,$idRol){
 		$this->Usuario();
@@ -67,6 +71,27 @@ class Empleado extends Usuario {
 		$mysql = $datos->conectar();
 		$mysql->query("CALL inhabilitarEmpleado('$this->idEmpleado')");
 		$mysql = $datos->Desconectar($mysql);
+	}
+
+	public function login(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();		
+		$login=$mysql->query("CALL login('$this->correoElectronico','$this->contrasena')");
+		$mysql = $datos->Desconectar($mysql);
+		if ($vectorLogin=mysqli_fetch_array($login) ) {
+			$_SESSION['sesion']=1;
+			$_SESSION['idEmpleado'] = $vectorLogin['idEmpleado'];
+			$_SESSION['empleado'] = $vectorLogin['nombreCompleto'];
+			$_SESSION['idRol'] = $vectorLogin['Rol_idRol'];
+			$_SESSION['rol'] = $vectorLogin['rol'];
+			return True;
+		}
+
+		else{
+			return False;
+		}
+	
+		
 	}
 }
 

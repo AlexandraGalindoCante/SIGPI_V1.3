@@ -53,3 +53,18 @@ BEGIN
 	
     UPDATE Empleado SET visibilidad = 0 WHERE idEmpleado = _idEmpleado;
 END //
+
+
+--login 
+
+DELIMITER //
+CREATE PROCEDURE login(
+ _email VARCHAR(50),
+ _password VARCHAR(50)
+ )
+BEGIN
+    select idEmpleado, nombreCompleto, Rol_idRol, nombre as rol
+    from Empleado inner join usuario on Empleado.Usuario_idUsuario = Usuario.idUsuario 
+    inner join rol on Empleado.Rol_idRol = Rol.idRol 
+    where nombreUsuario = _email && contrasena = _password;
+END //
