@@ -55,7 +55,8 @@ class Empleado extends Usuario {
 	public function registrarEmpleado(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();
-		$mysql->query("CALL registrarEmpleado('$this->nombreCompleto','$this->contrasena','$this->documento','$this->telefonoFijo','$this->telefonoCelular','$this->correoElectronico','$this->direccion','$this->idRol')");
+		$enc_contrasena = password_hash($this->contrasena, PASSWORD_DEFAULT);
+		$mysql->query("CALL registrarEmpleado('$this->nombreCompleto','$enc_contrasena','$this->documento','$this->telefonoFijo','$this->telefonoCelular','$this->correoElectronico','$this->direccion','$this->idRol')") or die($mysql->error);
 		$mysql = $datos->Desconectar($mysql);
 	}
 
@@ -76,15 +77,22 @@ class Empleado extends Usuario {
 	public function login(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();		
-		$login=$mysql->query("CALL login('$this->correoElectronico','$this->contrasena')");
+		$login=$mysql->query("CALL login('$this->correoElectronico')");
 		$mysql = $datos->Desconectar($mysql);
 		if ($vectorLogin=mysqli_fetch_array($login) ) {
-			$_SESSION['sesion']=1;
-			$_SESSION['idEmpleado'] = $vectorLogin['idEmpleado'];
-			$_SESSION['empleado'] = $vectorLogin['nombreCompleto'];
-			$_SESSION['idRol'] = $vectorLogin['Rol_idRol'];
-			$_SESSION['rol'] = $vectorLogin['rol'];
-			return True;
+			if(password_verify($this->contrasena, $vectorLogin['contrasena'])){
+				$_SESSION['sesion']=1;
+				$_SESSION['idEmpleado'] = $vectorLogin['idEmpleado'];
+				$_SESSION['empleado'] = $vectorLogin['nombreCompleto'];
+				$_SESSION['idRol'] = $vectorLogin['Rol_idRol'];
+				$_SESSION['rol'] = $vectorLogin['rol'];
+				//return True;
+				echo $_SESSION['sesion'].$_SESSION['idEmpleado'].$_SESSION['empleado'].$_SESSION['idRol'].$_SESSION['rol'] ;
+			}
+			else {
+				return false;
+			}
+			
 		}
 
 		else{

@@ -89,7 +89,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SIGPI`.`Usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT COMMENT 'Codigo identificador unico para usuario',
   `nombreUsuario` VARCHAR(45) NOT NULL COMMENT 'Nombre identificador unico para usuario',
-  `contrasena` VARCHAR(45) NOT NULL COMMENT 'Contraseña del usuario',
+  `contrasena` VARCHAR(255) NOT NULL COMMENT 'Contraseña del usuario',
   `visibilidad` TINYINT(1) NOT NULL COMMENT 'Indica si un registro es visible (1 visible, 0 no visible)',
   PRIMARY KEY (`idUsuario`))
 ENGINE = InnoDB;

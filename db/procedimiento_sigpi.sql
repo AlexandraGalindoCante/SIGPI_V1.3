@@ -4,7 +4,7 @@
 DELIMITER //
 CREATE PROCEDURE registrarEmpleado(
  _nombreCompleto VARCHAR(50),
- _contrasena VARCHAR(50),
+ _contrasena VARCHAR(255),
  _documento VARCHAR(50),
  _telefonoFijo VARCHAR(50),
  _telefonoCelular VARCHAR(50),
@@ -59,14 +59,13 @@ END //
 
 DELIMITER //
 CREATE PROCEDURE login(
- _email VARCHAR(50),
- _password VARCHAR(50)
+ _email VARCHAR(50)
  )
 BEGIN
-    select idEmpleado, nombreCompleto, Rol_idRol, nombre as rol
+    select idEmpleado, nombreCompleto, Rol_idRol, nombre as rol, contrasena
     from Empleado inner join usuario on Empleado.Usuario_idUsuario = Usuario.idUsuario 
     inner join rol on Empleado.Rol_idRol = Rol.idRol 
-    where nombreUsuario = _email && contrasena = _password;
+    where nombreUsuario = _email;
 END //
 
 --crear equipos
