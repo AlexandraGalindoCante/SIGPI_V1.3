@@ -125,5 +125,53 @@ CREATE PROCEDURE nuevoMaterial(
     INSERT INTO Empleado(referencia,especificaciones,unidadMedida,cantDisponible,visibilidad)
     VALUES(_referencia,_especificaciones,_unidadMedida,_cantDisponible,1);
     INSERT INTO Tramite(fecha, cantidadAsignada, tipo, Empleado_idEmpleado,Material_idMaterial,visibilidad) 
-    VALUES (CURDATE(),_cantDisponible,'Entrada','$_SESSION[idEmpleado]', (select max(idMaterial) from Material),'1')
+    VALUES (CURDATE(),_cantDisponible,'Entrada','$_SESSION[idEmpleado]', (select max(idMaterial) from Material), 1)
  END //
+
+ --Proyecto
+
+
+DELIMITER //
+CREATE PROCEDURE registrarProyecto(
+ _nombre VARCHAR(50),
+ _inicio DATE,
+ _fin DATE,
+ _avance VARCHAR(50),
+ _cliente int,
+ _estado int,
+ _idEmpleado int
+ )
+BEGIN
+    INSERT INTO Proyecto (nombre,fechaInicio,fechaEntrega,porcentajeAvance,Cliente_idCliente,estadoProyecto_idEstadoProyecto,visibilidad)
+    VALUES(_nombre, _inicio, _fin, _avance, _cliente, _estado, 1);
+    INSERT INTO equipoTrabajo (Empleado_idEmpleado, Proyecto_idProyecto,visibilidad)
+    VALUES(_idEmpleado, (SELECT idProyecto FROM Proyecto 
+        WHERE nombre = _nombre AND fechaInicio = _inicio AND Cliente_idCliente = _cliente AND fechaEntrega = _fin) ,1);
+END //
+
+DELIMITER //
+CREATE PROCEDURE actualizarProyecto(
+ _nombre VARCHAR(50),
+ _inicio DATE,
+ _fin DATE,
+ _avance VARCHAR(50),
+ _cliente int,
+ _estado int,
+ _idProyecto int
+ )
+BEGIN
+    UPDATE Proyecto SET nombre = _nombre, fechaInicio = _inicio, fechaEntrega = _fin,
+     porcentajeAvance = _avance, Cliente_idCliente =_cliente, estadoProyecto_idEstadoProyecto = _estado WHERE idProyecto = _idProyecto;
+END //
+
+DELIMITER //
+CREATE  PROCEDURE inhabilitarProyecto(
+ _idProyecto int
+ )
+BEGIN
+    UPDATE Proyecto SET visibilidad = 0 WHERE idProyecto = _idProyecto;  
+    UPDATE Plano SET visibilidad = 0 WHERE Proyecto_idProyecto = _idProyecto;  
+    UPDATE ArchivoPlano SET visibilidad = 0 WHERE Plano_idPlano = (SELECT idPlano FROM Plano WHERE Proyecto_idProyecto = _idProyecto);  
+    UPDATE Orden SET visibilidad = 0 WHERE Plano_idPlano = (SELECT idPlano FROM Plano WHERE Proyecto_idProyecto = _idProyecto);    
+    UPDATE EquipoTrabajo SET visibilidad = 0 WHERE Proyecto_idProyecto = _idProyecto; 
+END //

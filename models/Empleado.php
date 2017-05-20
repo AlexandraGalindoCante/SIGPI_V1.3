@@ -2,6 +2,7 @@
 include ("Usuario.php");
 
 class Empleado extends Usuario {
+	
 	private $idEmpleado;
 	private $nombreCompleto;
 	private $documento;
@@ -24,6 +25,7 @@ class Empleado extends Usuario {
 	public function _constructor1($idEmpleado){
 		$this->idEmpleado=$idEmpleado;
 	}
+	
 	public function _constructor2($email, $password){
 		$this->correoElectronico=$email;
 		$this->contrasena=$password;
@@ -75,6 +77,7 @@ class Empleado extends Usuario {
 	}
 
 	public function login(){
+		session_start();
 		$datos = new Datos();
 		$mysql = $datos->conectar();		
 		$login=$mysql->query("CALL login('$this->correoElectronico')");
@@ -86,21 +89,18 @@ class Empleado extends Usuario {
 				$_SESSION['empleado'] = $vectorLogin['nombreCompleto'];
 				$_SESSION['idRol'] = $vectorLogin['Rol_idRol'];
 				$_SESSION['rol'] = $vectorLogin['rol'];
-				//return True;
-				echo $_SESSION['sesion'].$_SESSION['idEmpleado'].$_SESSION['empleado'].$_SESSION['idRol'].$_SESSION['rol'] ;
+				return True;
 			}
 			else {
 				return false;
 			}
 			
 		}
-
 		else{
 			return False;
 		}
-	
-		
 	}
+
 }
 
 ?>

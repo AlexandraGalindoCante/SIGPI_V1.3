@@ -1,15 +1,15 @@
 <?php 
 
-class Material {
-
-
-	private $idMaterial;
-	private $referencia;
-	private $especificaciones;
-	private $unidadMedida;
-	private $cantDisponible;
-
-public function Material(){
+class Cliente {
+	
+	private $idCliente;
+	private $nombre;
+	private $telefonoFijo;
+	private $telefonoCelular;
+	private $correoElectronico;
+	private $nit;
+	
+	public function Cliente(){
 		$parametros = func_get_args();//toma todos los parametros que ele envian y los guarda en un vector
 		$cantidad = func_num_args();//cuenta cant de parametrs enviados
 		$funcionConstructor = '_constructor'.$cantidad;//crea un string que va a tener el nombre del metodo + cantidad de parametros
@@ -19,22 +19,13 @@ public function Material(){
 		}
 	}
 
-	public function _constructor4 ($referencia,$especificaciones,$unidadMedida,$cantDisponible){
-		$this->referencia=$referencia;
-		$this->especificaciones=$especificaciones;
-		$this->unidadMedida=$unidadMedida;
-		$this->cantDisponible=$cantDisponible;
-
+	public function _constructor1($idCliente){
+		$this->idCliente=$idCliente;
 	}
 
-
-
-
-
-
-
-
-
+	public function getId(){
+		return $this->idCliente;
+	}
 }
 
 ?>

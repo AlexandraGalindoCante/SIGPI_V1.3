@@ -1,8 +1,9 @@
 <?php
 
+include ("../models/Datos.php");
 include ("../models/Empleado.php");
 
-$empleado = new Empleado($_REQUEST[email],$_REQUEST[password]);
+$empleado = new Empleado($_REQUEST['email'],$_REQUEST['password']);
 if ($empleado->login()) {
 	//header('Location: ../gestionProyecto.php');
 	

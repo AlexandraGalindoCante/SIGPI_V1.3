@@ -1,5 +1,5 @@
 <?php 
-include ("Datos.php");
+
 class EquipoTrabajo {
 	private $idEmpleado;
 	private $idProyecto;

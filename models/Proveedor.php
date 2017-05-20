@@ -1,5 +1,4 @@
 <?php 
-include ("Datos.php");
 
 
 class Proveedor {

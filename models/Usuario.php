@@ -1,6 +1,7 @@
 <?php 
-include ("Datos.php");
+
 class Usuario {
+	
 	protected $idUsuario;
 	protected $nombreUsuario;
 	protected $contrasena;
