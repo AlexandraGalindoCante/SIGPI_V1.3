@@ -175,3 +175,58 @@ BEGIN
     UPDATE Orden SET visibilidad = 0 WHERE Plano_idPlano = (SELECT idPlano FROM Plano WHERE Proyecto_idProyecto = _idProyecto);    
     UPDATE EquipoTrabajo SET visibilidad = 0 WHERE Proyecto_idProyecto = _idProyecto; 
 END //
+
+--Informe 
+
+DELIMITER //
+CREATE  PROCEDURE registrarInforme(
+ _nombre varchar(45),
+ _tipoArchivo varchar(100),
+ _tamano varchar(45),
+ _ruta varchar(100),
+ _idEmpleado int,
+ _idProyecto int
+ )
+BEGIN
+    INSERT INTO Informe (nombre, tipoArchivo, tamano, ruta, Empleado_idEmpleado, Proyecto_idProyecto, visibilidad)
+    VALUES (_nombre, _tipoArchivo, _tamano, _ruta, _idEmpleado, _idProyecto, 1); 
+END //
+
+DELIMITER //
+CREATE PROCEDURE inhabilitarInforme
+(
+_idArchivo int
+)
+BEGIN
+    UPDATE Informe SET visibilidad = 0 WHERE idArchivo = _idArchivo;
+END//
+
+--Plano
+
+DELIMITER //
+CREATE  PROCEDURE registrarPlano(
+ _nombre varchar(45),
+ _tipoArchivo varchar(100),
+ _tamano varchar(45),
+ _ruta varchar(100),
+ _idEmpleado int,
+ _idProyecto int
+ )
+BEGIN
+    INSERT INTO Plano (Proyecto_idProyecto, descripcion, visibilidad)
+    VALUES (_idProyecto, _nombre, 1);
+
+    INSERT INTO ArchivoPlano (tipoArchivo, tamano, ruta, Empleado_idEmpleado, Plano_idPlano, visibilidad)
+    VALUES (_tipoArchivo, _tamano, _ruta, _idEmpleado, (SELECT idPlano FROM Plano WHERE descripcion = _nombre AND Proyecto_idProyecto = _idProyecto),1);
+END //
+
+DELIMITER //
+CREATE PROCEDURE inhabilitarPlano
+(
+_idArchivo int
+)
+BEGIN
+    UPDATE Plano SET visibilidad = 0 WHERE idPlano = (SELECT Plano_idPlano FROM ArchivoPlano WHERE idArchivo = _idArchivo);
+    UPDATE Orden SET visibilidad = 0 WHERE Plano_idPlano = (SELECT Plano_idPlano FROM ArchivoPlano WHERE idArchivo = _idArchivo);
+    UPDATE ArchivoPlano SET visibilidad = 0 WHERE  idArchivo = _idArchivo;
+END//

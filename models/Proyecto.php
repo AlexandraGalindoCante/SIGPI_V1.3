@@ -45,6 +45,10 @@ class Proyecto {
 		$this->idProyecto= $idProyecto;
 	}
 
+	public function getId(){
+		return $this->idProyecto;
+	}
+
 	public function registrarProyecto(){
 		session_start();
 		$datos = new Datos();

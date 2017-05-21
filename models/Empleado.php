@@ -54,6 +54,10 @@ class Empleado extends Usuario {
 		$this->idEmpleado=$idEmpleado;
 	}
 
+	public function getId(){
+		return $this->idEmpleado;
+	}
+
 	public function registrarEmpleado(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();
