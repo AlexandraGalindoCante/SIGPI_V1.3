@@ -93,8 +93,7 @@ BEGIN
     delete from  equipoTrabajo  where (Empleado_idEmpleado=_idEmpleado) && ( proyecto_idProyecto=_idProyecto);
 END//
 
---Proveedor
-
+--registrarProveedor
 DELIMITER //
 CREATE PROCEDURE registrarProveedor(
  _nombre VARCHAR(50),
@@ -104,11 +103,33 @@ CREATE PROCEDURE registrarProveedor(
  _direccion VARCHAR(50)
  )
 BEGIN
-    INSERT INTO Usuario(nombreUsuario, contrasena, visibilidad) VALUES( _correoElectronico, _contrasena, 1);    
-    
     INSERT INTO Proveedor (nombre, asesor, telefono, correoElectronico, direccion, visibilidad) 
     VALUES(_nombre, _asesor, _telefono, _correoElectronico, _direccion, 1);
 END //
+
+--actualizarProveedor
+DELIMITER //
+CREATE PROCEDURE actualizarProveedor(
+  _nombre VARCHAR(50),
+  _asesor VARCHAR(50),
+  _telefono VARCHAR(50),
+  _correoElectronico VARCHAR(50),
+  _direccion VARCHAR(50)
+ )
+BEGIN
+    UPDATE Proveedor SET nombre = _nombre, asesor = _asesor, telefono = _telefono,
+     correoElectronico = _correoElectronico, direccion =_direccion, WHERE idProveedor = _idProveedor;
+END //
+
+--inhabilitarProveedor
+DELIMITER //
+CREATE PROCEDURE inhabilitarProveedor(
+	_idProveedor int
+)	
+BEGIN
+        UPDATE Proveedor SET visibilidad = 0 WHERE idProveedor = _idProveedor;
+    );	
+END//
 
 
 --Material
