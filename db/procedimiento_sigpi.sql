@@ -230,3 +230,28 @@ BEGIN
     UPDATE Orden SET visibilidad = 0 WHERE Plano_idPlano = (SELECT Plano_idPlano FROM ArchivoPlano WHERE idArchivo = _idArchivo);
     UPDATE ArchivoPlano SET visibilidad = 0 WHERE  idArchivo = _idArchivo;
 END//
+--Material
+DELIMITER //
+CREATE PROCEDURE registrarMaterial(
+    _referencia varchar(45),
+    _especificaciones varchar(45),
+    _unidadMedida varchar(45),
+    _cantDisponible double,
+    _idEmpleado int)
+BEGIN
+    INSERT INTO Material(referencia,especificaciones,unidadMedida,cantidadDisponible,visibilidad)VALUES( _referencia, _especificaciones,_unidadMedida,_cantDisponible,1);
+    INSERT INTO Tramite(fecha,cantidadAsignada,tipo,Empleado_idEmpleado,Material_idMaterial,visibilidad)VALUES(CURDATE(),_cantDisponible,'Entrada',_idEmpleado,(SELECT idMaterial FROM Material WHERE referencia=_referencia AND especificaciones=_especificaciones),'1'); 
+END //
+
+DELIMITER //
+CREATE PROCEDURE actualizarMaterial(
+    _idMaterial int,
+    _referencia varchar(45),
+    _especificaciones varchar(45),
+    _unidadMedida varchar(45),
+ )
+BEGIN
+    UPDATE Material SET referencia=_referencia,especificaciones=_especificaciones,unidadMedida=_unidadMedida
+    WHERE idMaterial=_idMaterial;
+   
+END //

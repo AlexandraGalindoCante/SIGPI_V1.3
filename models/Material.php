@@ -19,6 +19,10 @@ public function Material(){
 		}
 	}
 
+	public function _constructor1($idMaterial){
+		$this->idMaterial=$idMaterial;
+	}
+
 	public function _constructor4 ($referencia,$especificaciones,$unidadMedida,$cantDisponible){
 		$this->referencia=$referencia;
 		$this->especificaciones=$especificaciones;
@@ -26,6 +30,37 @@ public function Material(){
 		$this->cantDisponible=$cantDisponible;
 
 	}
+		public function _constructor5($idMaterial,$referencia,$especificaciones,$unidadMedida,$cantDisponible){
+		$this->referencia=$referencia;
+		$this->especificaciones=$especificaciones;
+		$this->unidadMedida=$unidadMedida;
+		$this->cantDisponible=$cantDisponible;
+		$this->idMaterial=$idMaterial;
+	}
+
+
+
+	public function registrarMaterial(){
+
+
+		session_start();
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$idEmpleado=$_SESSION['idEmpleado'];
+		$mysql->query("CALL registrarMaterial('$this->referencia','$this->especificaciones','$this->unidadMedida','$this->cantDisponible','$idEmpleado')")
+			or die($mysql->error);
+		$mysql = $datos->Desconectar($mysql);
+	}
+
+public function actulizarMaterial(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$idEmpleado=$_SESSION['idEmpleado'];
+		$mysql->query("CALL actualizarMaterial('$this->idMaterial',$this->referencia','$this->especificaciones','$this->unidadMedida')")
+		or die($mysql->error);
+		$mysql = $datos->Desconectar($mysql);
+	}
+
 
 
 
