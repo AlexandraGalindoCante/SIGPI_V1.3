@@ -132,20 +132,6 @@ BEGIN
 END//
 
 
---Material
-DELIMITER//
-CREATE PROCEDURE nuevoMaterial(
-    _referencia VARCHAR(50),
-    _especificaciones TEXT,
-    _unidadMedida VARCHAR(50),
-    _cantDisponible double
-     )
- BEGIN
-    INSERT INTO Empleado(referencia,especificaciones,unidadMedida,cantDisponible,visibilidad)
-    VALUES(_referencia,_especificaciones,_unidadMedida,_cantDisponible,1);
-    INSERT INTO Tramite(fecha, cantidadAsignada, tipo, Empleado_idEmpleado,Material_idMaterial,visibilidad) 
-    VALUES (CURDATE(),_cantDisponible,'Entrada','$_SESSION[idEmpleado]', (select max(idMaterial) from Material), 1)
- END //
 
  --Proyecto
 
@@ -212,8 +198,7 @@ BEGIN
 END //
 
 DELIMITER //
-CREATE PROCEDURE inhabilitarInforme
-(
+CREATE PROCEDURE inhabilitarInforme(
 _idArchivo int
 )
 BEGIN
@@ -250,6 +235,23 @@ BEGIN
 END//
 
 --Material
+DELIMITER//
+CREATE PROCEDURE nuevoMaterial(
+    _referencia VARCHAR(50),
+    _especificaciones TEXT,
+    _unidadMedida VARCHAR(50),
+    _cantDisponible double
+     )
+ BEGIN
+    INSERT INTO Material(referencia,especificaciones,unidadMedida,cantDisponible,visibilidad)
+    VALUES(_referencia,_especificaciones,_unidadMedida,_cantDisponible,1);
+    INSERT INTO Tramite(fecha, cantidadAsignada, tipo, Empleado_idEmpleado,Material_idMaterial,visibilidad) 
+    VALUES (CURDATE(),_cantDisponible,'Entrada','$_SESSION[idEmpleado]', (select max(idMaterial) from Material), 1)
+ END //
+
+
+--Material
+
 DELIMITER //
 CREATE PROCEDURE registrarMaterial(
     _referencia varchar(45),
