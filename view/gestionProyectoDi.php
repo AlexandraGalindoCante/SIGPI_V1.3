@@ -20,17 +20,17 @@ include ("consulta/libSigpi.php");
     <title>SIGPI</title>
 
     
-     <link href="css/interfaz.css" rel="stylesheet">
+     <link href="../css/interfaz.css" rel="stylesheet">
 
-    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
    
-    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
 
    
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     
 
@@ -71,7 +71,7 @@ include('modals/md_registrarEquipo.php');
                 <!--img_2 -->
               <div class="profile_pic" style="margin-left:70px;">
                 <br>
-                  <img src="imagenes/logofinal4.png" alt="..." class="img-circle profile_img" >
+                  <img src="../imagenes/logofinal4.png" alt="..." class="img-circle profile_img" >
               </div>
               <div class="profile_info" style="margin-left:35px;">
                  <h3> <span>Bienvenido</span></h3>
@@ -141,9 +141,9 @@ include('modals/md_registrarEquipo.php');
     <!-- /#wrapper -->
 
 
-  <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/app.js"></script>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/app.js"></script>
   <script>
     $(document).ready(function(){
       load(1);
@@ -157,7 +157,7 @@ include('modals/md_registrarEquipo.php');
             url:'consulta/cargarProyectoDi.php',
             data: parametros,
              beforeSend: function(objeto){
-            $("#loadProyecto").html("<img src='imagenes/loader.gif'>");
+            $("#loadProyecto").html("<img src='../imagenes/loader.gif'>");
             },
             success:function(data){
                 $(".outer_div").html(data).fadeIn('slow');
@@ -171,16 +171,16 @@ include('modals/md_registrarEquipo.php');
 
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/sb-admin-2.js"></script>
+    <script src="../js/sb-admin-2.js"></script>
 
 </body>
 

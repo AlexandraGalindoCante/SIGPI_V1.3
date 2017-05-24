@@ -48,9 +48,9 @@ include ("consulta/libSigpi.php");
 
 <body>
 <?php 
-include('../modals/md_entradaTramite.php');
-include('../modals/md_registrarTramite.php');
-include('../modals/md_devolucion.php')
+include('modals/md_entradaTramite.php');
+include('modals/md_registrarTramite.php');
+include('modals/md_devolucion.php')
 ?>
        <div id="wrapper">
 

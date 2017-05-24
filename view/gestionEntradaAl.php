@@ -195,7 +195,7 @@ include('modals/md_eliminarOrden.php')
             url:'consulta/cargarEntrada.php',
             data: parametros,
              beforeSend: function(objeto){
-            $("#loadEntrada").html("<img src='imagenes/loader.gif'>");
+            $("#loadEntrada").html("<img src='../imagenes/loader.gif'>");
             },
             success:function(data){
                 $(".outer_div").html(data).fadeIn('slow');

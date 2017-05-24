@@ -196,7 +196,7 @@ include('modals/md_eliminarMaterial.php')
             url:'consulta/cargarMaterial.php',
             data: parametros,
              beforeSend: function(objeto){
-            $("#loadMaterial").html("<img src='imagenes/loader.gif'>");
+            $("#loadMaterial").html("<img src='../imagenes/loader.gif'>");
             },
             success:function(data){
                 $(".outer_div").html(data).fadeIn('slow');

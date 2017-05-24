@@ -20,22 +20,22 @@ include ("consulta/libSigpi.php");
   <title>SIGPI</title>
 
   <!-- Bootstrap Core CSS -->
-   <link href="css/interfaz.css" rel="stylesheet">
+   <link href="../css/interfaz.css" rel="stylesheet">
 
-  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!-- MetisMenu CSS -->
-  <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
   <!-- Custom CSS -->
 
  
 
   <!-- Morris Charts CSS -->
-  <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+  <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -81,7 +81,7 @@ include('modals/md_eliminarProveedor.php')
                 <!--img_2 -->
               <div class="profile_pic" style="margin-left:70px;">
                 <br>
-                  <img src="imagenes/logofinal4.png" alt="..." class="img-circle profile_img" >
+                  <img src="../imagenes/logofinal4.png" alt="..." class="img-circle profile_img" >
               </div>
               <div class="profile_info" style="margin-left:35px;">
                  <h3> <span>Bienvenido</span></h3>
@@ -163,9 +163,9 @@ include('modals/md_eliminarProveedor.php')
  
 
 
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/app.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/app.js"></script>
 
 <script>
   $(document).ready(function(){
@@ -180,7 +180,7 @@ include('modals/md_eliminarProveedor.php')
           url:'consulta/cargarProveedor.php',
           data: parametros,
            beforeSend: function(objeto){
-          $("#loadProveedor").html("<img src='imagenes/loader.gif'>");
+          $("#loadProveedor").html("<img src='../imagenes/loader.gif'>");
           },
           success:function(data){
               $(".outer_div").html(data).fadeIn('slow');
@@ -191,16 +191,16 @@ include('modals/md_eliminarProveedor.php')
 </script>
 
  <!-- jQuery -->
-  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
 
   <!-- Bootstrap Core JavaScript -->
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Metis Menu Plugin JavaScript -->
-  <script src="vendor/metisMenu/metisMenu.min.js"></script>
+  <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
   <!-- Custom Theme JavaScript -->
-  <script src="js/sb-admin-2.js"></script>
+  <script src="../js/sb-admin-2.js"></script>
 
 
 
