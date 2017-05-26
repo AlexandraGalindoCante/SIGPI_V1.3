@@ -31,11 +31,11 @@
                         <div class="panel panel-default" id="panel1">
                             <div class="panel-heading" id="panel2">                                
                                 <div class="row-fluid user-row">
-                                    <img src="imagenes/logofinal4.png" class="img-responsive" alt="Conxole Admin"/>
+                                    <img src="../imagenes/logofinal4.png" class="img-responsive" alt="Conxole Admin"/>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <form method="post" action="consulta/login.php" id="signup" class="form-signin" >
+                                <form method="post" action="../controladores/controladorEmpleado.php" id="signup" class="form-signin" >
                                     <fieldset>
                                         <label class="panel-login">
                                             <div class="login_result"></div>
