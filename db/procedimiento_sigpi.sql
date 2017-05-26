@@ -277,3 +277,11 @@ BEGIN
    
 END //
 
+--Rol
+
+DELIMITER //
+CREATE PROCEDURE consultarIdRol(
+    _nombre varchar(45))
+    SELECT idRol FROM rol WHERE nombre = _nombre;
+BEGIN
+END //

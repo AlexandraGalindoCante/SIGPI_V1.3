@@ -61,7 +61,7 @@ class Empleado extends Usuario {
 	public function registrarEmpleado(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();
-		$this->contrasena = '123';
+		$this->contrasena = '123';//Todas las contraseñas seran 123 mientras se hacen pruebas
 		$enc_contrasena = password_hash($this->contrasena, PASSWORD_DEFAULT);
 		/*
 			$asunto = "Sigpi- inicio";

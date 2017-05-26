@@ -9,23 +9,24 @@ class controladorEmpleado{
 
 	public function login(){
 		session_start();
+		include ("../models/Rol.php");
 		$this->model = new Empleado($_REQUEST['email'],$_REQUEST['password']);
-
+		$rol = new Rol;
 		if ($this->model->login()){
-			if ($_SESSION['idRol'] == '2'){
+			if ($_SESSION['idRol'] == $rol->consultarId('gerente')){
 				header('Location: ../view/lobby.php');
 			}
 
-			if ($_SESSION['idRol'] == '4'){
+			if ($_SESSION['idRol'] == $rol->consultarId('ejecutor')){
 				header('Location: ../view/lobbyEj.php');
 			}
-			if ($_SESSION['idRol']== '1'){
+			if ($_SESSION['idRol']== $rol->consultarId('jefe de proyecto')){
 				header('Location: ../view/lobbyJp.php');
 			}
-			if ($_SESSION['idRol']== '3'){
+			if ($_SESSION['idRol']== $rol->consultarId('disenador')){
 				header('Location: ../view/lobbyDi.php');
 			}
-			if ($_SESSION['idRol'] == '5'){
+			if ($_SESSION['idRol'] == $rol->consultarId('almacenista')){
 				header('Location: ../lobbyAl.php');
 			}
 		}
