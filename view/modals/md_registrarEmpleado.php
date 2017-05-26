@@ -1,5 +1,5 @@
  
-<form id="guardarEmpleado">
+<form id="guardarEmpleado" >
  <div class="modal " id="registroEmpleado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

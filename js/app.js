@@ -163,14 +163,14 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "controladores/actualizarEmpleado.php",
+                    url: "../controladores/actualizarEmpleado.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
                       },
                     success: function(datos){
                     $('#modificarEmpleado').modal('hide');
-                     $('.modal-backdrop').remove();
+                    $('.modal-backdrop').remove();
                      
                     location.reload();
                   }
@@ -182,7 +182,7 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "controladores/registrarEmpleado.php",
+                    url: "../controladores/controladorEmpleado.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -190,18 +190,18 @@
                     success: function(datos){
                     
                     $('#registroEmpleado').modal('hide');
-                     $('.modal-backdrop').remove();
+                    $('.modal-backdrop').remove();
                     location.reload();
                   }
             });
           event.preventDefault();
         });
         
-        $( "#deshabilitarEmpleado" ).submit(function( event ) {
+        $( "#inhabilitarEmpleado" ).submit(function( event ) {
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "controladores/inhabilitarEmpleado.php",
+                    url: "../controladores/inhabilitarEmpleado.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         

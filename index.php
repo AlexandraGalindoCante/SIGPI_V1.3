@@ -1,17 +1,16 @@
-<!doctype html>
 <html lang ="es">
 <head>
 <meta charset ="utf-8">
 	<title>SIGPI</title>
-	<link	rel="stylesheet" type="text/css" href="../css/font-awesome.css">
-        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-	<link	rel="stylesheet" type="text/css" href="../css/estilos.css">
+	<link	rel="stylesheet" type="text/css" href="css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link	rel="stylesheet" type="text/css" href="css/estilos.css">
 
-	<link 	rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
+	<link 	rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="../js/log.js"></script>
+  <script src="js/log.js"></script>
 </head>
 
 <body onload="move()" >
@@ -31,11 +30,11 @@
                         <div class="panel panel-default" id="panel1">
                             <div class="panel-heading" id="panel2">                                
                                 <div class="row-fluid user-row">
-                                    <img src="../imagenes/logofinal4.png" class="img-responsive" alt="Conxole Admin"/>
+                                    <img src="imagenes/logofinal4.png" class="img-responsive" alt="Conxole Admin"/>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <form method="post" action="../controladores/controladorEmpleado.php" id="signup" class="form-signin" >
+                                <form method="post" action="controladores/controladorEmpleado.php" id="signup" class="form-signin" >
                                     <fieldset>
                                         <label class="panel-login">
                                             <div class="login_result"></div>
