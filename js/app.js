@@ -163,7 +163,7 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "../controladores/actualizarEmpleado.php",
+                    url: "../controladores/controladorEmpleado.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -201,7 +201,7 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "../controladores/inhabilitarEmpleado.php",
+                    url: "../controladores/controladorEmpleado.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -262,7 +262,7 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/actualizarProyecto.php",
+                    url: "../controladores/controladorProyecto.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -284,7 +284,7 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/nuevoProyecto.php",
+                    url: "../controladores/controladorProyecto.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -302,11 +302,11 @@
           event.preventDefault();
         });
         
-        $( "#deshabilitarProyecto" ).submit(function( event ) {
+        $( "#inhabilitarProyecto" ).submit(function( event ) {
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/deshabilitarProyecto.php",
+                    url: "../controladores/controladorProyecto.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         

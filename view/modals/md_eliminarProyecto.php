@@ -1,4 +1,4 @@
-<form id="deshabilitarProyecto">
+<form id="inhabilitarProyecto">
 <div class="modal " id="eliminarProyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

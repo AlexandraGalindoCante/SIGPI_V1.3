@@ -19,7 +19,7 @@ BEGIN
      telefonoCelular, correoElectronico, direccion, Rol_idRol,Usuario_idUsuario, 
      visibilidad) 
     VALUES(_nombreCompleto, _documento, _telefonoFijo, _telefonoCelular, _correoElectronico,
-     _direccion, _idRol, (SELECT idUsuario FROM Usuario WHERE nombreUsuario = _correoElectronico), 1);
+     _direccion, _idRol, (SELECT idUsuario FROM Usuario WHERE nombreUsuario = _correoElectronico AND visibilidad = 1), 1);
 END //
 
 
@@ -65,7 +65,7 @@ BEGIN
     select idEmpleado, nombreCompleto, Rol_idRol, nombre as rol, contrasena
     from Empleado inner join usuario on Empleado.Usuario_idUsuario = Usuario.idUsuario 
     inner join rol on Empleado.Rol_idRol = Rol.idRol 
-    where nombreUsuario = _email;
+    where nombreUsuario = _email AND usuario.visibilidad = 1;
 END //
 
 --crear equipos
