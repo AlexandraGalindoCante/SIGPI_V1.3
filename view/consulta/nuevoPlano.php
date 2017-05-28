@@ -29,7 +29,7 @@ include ("libSigpi.php");
 
 
         move_uploaded_file($nombre_tmp,
-          "../archivos/" . $nombre);
+          "../../archivos/" . $nombre);
     }
   
 

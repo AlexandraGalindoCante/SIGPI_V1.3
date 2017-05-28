@@ -1,4 +1,4 @@
-<form action="consulta/nuevoPlano.php" method="post" enctype="multipart/form-data">
+<form action="../controladores/controladorArchivoPlano.php" method="post" enctype="multipart/form-data">
 
 
     <div class="modal " id="registroPlano" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

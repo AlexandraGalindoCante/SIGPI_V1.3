@@ -1,4 +1,4 @@
-<form action="consulta/nuevoInforme.php" method="post" enctype="multipart/form-data">
+<form action="../controladores/controladorInforme.php" method="post" enctype="multipart/form-data">
 
 
     <div class="modal " id="registroInforme" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
