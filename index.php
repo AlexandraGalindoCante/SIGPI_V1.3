@@ -21,38 +21,45 @@
 </div> 
 </header>
 
+<?php
+    include('view/modals/md_recuperacionContrasena.php');
+?>
+
 
 <div id="container"   >
-                <div >
-                    <div class="row vertical-offset-100">
-        <div class="col-md-4 col-md-offset-4">
-                
-                        <div class="panel panel-default" id="panel1">
-                            <div class="panel-heading" id="panel2">                                
-                                <div class="row-fluid user-row">
-                                    <img src="imagenes/logofinal4.png" class="img-responsive" alt="Conxole Admin"/>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <form method="post" action="controladores/controladorEmpleado.php" id="signup" class="form-signin" >
-                                    <fieldset>
-                                        <label class="panel-login">
-                                            <div class="login_result"></div>
-                                        </label>
-                                        <input class="form-control" placeholder="Correo electronico" name="email" type="email" autofocus>
-                                        <input class="form-control" placeholder="Contraseña" name="password" type="password">
-                                        <br></br>
-                                        <button type="submit" class="btn btn-tema btn-lg btn-block pull-right" width="200">Iniciar sesion</button>
-                    
-                    </div>
-                                    </fieldset>
-                                </form>
-                            </div>
+    <div >
+        <div class="row vertical-offset-100">
+            <div class="col-md-4 col-md-offset-4">
+        
+                <div class="panel panel-default" id="panel1">
+                    <div class="panel-heading" id="panel2">                                
+                        <div class="row-fluid user-row">
+                            <img src="imagenes/logofinal4.png" class="img-responsive" alt="Conxole Admin"/>
                         </div>
+                    </div>
+                    <div class="panel-body">
+                        <form method="post" action="controladores/controladorEmpleado.php" id="signup" class="form-signin" >
+                            <fieldset>
+                                <label class="panel-login">
+                                    <div class="login_result"></div>
+                                </label>
+                                <input class="form-control" placeholder="Correo electronico" name="email" type="email" autofocus>
+                                <input class="form-control" placeholder="Contraseña" name="password" type="password">
+                                <br></br>
+                                <button type="submit" class="btn btn-tema btn-lg btn-block pull-right" width="200">Iniciar sesion</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="panel-footer"  style="text-align: center">
+                        <a href="#" data-toggle="modal" data-target="#recuperarContrasena" > ¿Olvidó su contraseña? </a>
+                    </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
        
            
 

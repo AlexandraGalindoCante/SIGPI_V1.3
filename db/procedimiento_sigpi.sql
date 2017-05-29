@@ -68,6 +68,27 @@ BEGIN
     where nombreUsuario = _email AND usuario.visibilidad = 1;
 END //
 
+DELIMITER //
+CREATE PROCEDURE buscarCorreo(
+ _email VARCHAR(50)
+ )
+BEGIN
+    SELECT count(*) AS usuario
+    FROM Usuario
+    where nombreUsuario = _email AND visibilidad = 1;
+END //
+
+DELIMITER //
+CREATE PROCEDURE cambiarContrasena(
+ _email VARCHAR(50),
+ _pass varchar(255)
+ )
+BEGIN
+    UPDATE usuario
+    SET contrasena = _pass
+    where nombreUsuario = _email AND visibilidad = 1;
+END 
+
 --crear equipos
 
 
