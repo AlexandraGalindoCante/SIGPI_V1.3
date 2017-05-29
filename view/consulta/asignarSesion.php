@@ -20,7 +20,7 @@ if (isset($_REQUEST['idMaterial'])){
 	if ($_SESSION['idRol'] == '5') {
 		header('Location: ../gestionDirectorioAl.php');
 	}
-	if ($_SESSION['idRol'] == '4') {
+	if ($_SESSION['idRol'] == '2') {
 		header('Location: ../gestionDirectorio.php');
 	}
 }

@@ -81,7 +81,7 @@ include('modals/md_registrarEquipo.php');
                 <!--img_2 -->
               <div class="profile_pic" style="margin-left:70px;">
                 <br>
-                  <img src="../../imagenes/logofinal4.png" alt="..." class="img-circle profile_img" >
+                  <img src="../imagenes/logofinal4.png" alt="..." class="img-circle profile_img" >
               </div>
               <div class="profile_info" style="margin-left:35px;">
                  <h3> <span>Bienvenido</span></h3>

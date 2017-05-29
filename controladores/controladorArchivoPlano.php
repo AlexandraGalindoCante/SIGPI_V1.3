@@ -7,7 +7,8 @@ class controladorArchivoPlano{
 
 	private $model;
 
-	public function registrar(){
+	public function registrar(){	
+		include ("../models/Rol.php");
 		session_start();
 		$nombre = $_FILES['plano']['name'];
 		$nombre_tmp = $_FILES['plano']['tmp_name'];
@@ -23,9 +24,20 @@ class controladorArchivoPlano{
 
 			move_uploaded_file($nombre_tmp, "../archivos/".$nombre);
 		}
+
+		$rol = new Rol;
+		switch ($_SESSION['idRol']) {
+			case $rol->consultarId('gerente'):
+					header('Location: ../view/gestionPlano.php');
+				break;
+			case $rol->consultarId('disenador'):
+					header('Location: ../view/gestionPlanoDi.php');
+				break;
+		}
 	}
 
 	public function inhabilitar(){
+
 		$model = new ArchivoPlano($_REQUEST['idPlano']);
 		$model->inhabilitarPlano();
 	}

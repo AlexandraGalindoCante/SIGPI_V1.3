@@ -114,11 +114,12 @@ CREATE PROCEDURE actualizarProveedor(
   _asesor VARCHAR(50),
   _telefono VARCHAR(50),
   _correoElectronico VARCHAR(50),
-  _direccion VARCHAR(50)
+  _direccion VARCHAR(50),
+  _idProveedor int
  )
 BEGIN
     UPDATE Proveedor SET nombre = _nombre, asesor = _asesor, telefono = _telefono,
-     correoElectronico = _correoElectronico, direccion =_direccion, WHERE idProveedor = _idProveedor;
+     correoElectronico = _correoElectronico, direccion =_direccion WHERE idProveedor = _idProveedor;
 END //
 
 --inhabilitarProveedor
@@ -127,8 +128,8 @@ CREATE PROCEDURE inhabilitarProveedor(
 	_idProveedor int
 )	
 BEGIN
-        UPDATE Proveedor SET visibilidad = 0 WHERE idProveedor = _idProveedor;
-    );	
+    UPDATE Proveedor SET visibilidad = 0 WHERE idProveedor = _idProveedor;
+    DELETE FROM DirectorioProveedor WHERE Proveedor_idProveedor = _idProveedor;	
 END//
 
 

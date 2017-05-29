@@ -43,14 +43,14 @@ class Proveedor {
 	public function registrarProveedor(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();
-		$mysql->query("CALL registrarProveedor('$this->nombre','$this->asesor','$this->telefono','$this->correoElectronico','$this->telefonoCelular','$this->direccion')");
+		$mysql->query("CALL registrarProveedor('$this->nombre','$this->asesor','$this->telefono','$this->correoElectronico','$this->direccion')");
 		$mysql = $datos->Desconectar($mysql);
 	}
 
 	public function actualizarProveedor(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();
-		$mysql->query("CALL actualizarProveedor('$this->nombre','$this->asesor','$this->telefono','$this->correoElectronico','$this->telefonoCelular','$this->direccion','$this->idProveedor=$idProveedor')");
+		$mysql->query("CALL actualizarProveedor('$this->nombre','$this->asesor','$this->telefono','$this->correoElectronico','$this->direccion','$this->idProveedor')");
 		$mysql = $datos->Desconectar($mysql);
 	}
 

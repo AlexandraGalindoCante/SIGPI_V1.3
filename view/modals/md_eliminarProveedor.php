@@ -1,4 +1,4 @@
-<form id="deshabilitarProveedor">
+<form id="inhabilitarProveedor">
 <div class="modal " id="eliminarProveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

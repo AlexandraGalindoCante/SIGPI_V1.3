@@ -443,7 +443,7 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/actualizarProveedor.php",
+                    url: "../controladores/controladorProveedor.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -463,7 +463,7 @@
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/nuevoProveedor.php",
+                    url: "../controladores/controladorProveedor.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -478,11 +478,11 @@
           event.preventDefault();
         });
         
-        $( "#deshabilitarProveedor" ).submit(function( event ) {
+        $( "#inhabilitarProveedor" ).submit(function( event ) {
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/deshabilitarProveedor.php",
+                    url: "../controladores/controladorProveedor.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         

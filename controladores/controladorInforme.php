@@ -8,6 +8,7 @@ class controladorInforme{
 	private $model;
 
 	public function registrar(){
+		include ("../models/Rol.php");
 		session_start();
 		$nombre = $_FILES['informe']['name'];
 		$nombre_tmp = $_FILES['informe']['tmp_name'];
@@ -22,6 +23,19 @@ class controladorInforme{
 			$informe->registrarInforme();
 
 			move_uploaded_file($nombre_tmp, "../archivos/".$nombre);
+		}
+
+		$rol = new Rol;
+		switch ($_SESSION['idRol']) {
+			case $rol->consultarId('gerente'):
+					header('Location: ../view/gestionInforme.php');
+				break;
+			case $rol->consultarId('jefe de proyecto'):
+					header('Location: ../view/gestionInformeJp.php');
+				break;
+			case $rol->consultarId('ejecutor'):
+					header('Location: ../view/gestionInformeEj.php');
+				break;
 		}
 	}
 
