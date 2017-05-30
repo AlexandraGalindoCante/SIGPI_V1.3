@@ -12,6 +12,7 @@
           <div class="modal-body">
           <div id="datos_ajax_register"></div>
             <input type="hidden" name="idProyecto" id="idProyecto"> 
+            <input type="hidden" name="funcion" value="registrar"> 
             <div class="form-group">
               <label>Empleado:</label>
               <select class="form-control" required name="idEmpleado">

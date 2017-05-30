@@ -514,7 +514,7 @@ $( "#guardarEquipo" ).submit(function( event ) {
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/nuevoEquipo.php",
+                    url: "../controladores/controladorEquipoTrabajo.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -540,11 +540,11 @@ $( "#guardarEquipo" ).submit(function( event ) {
 
         })
 
-            $( "#deshabilitarEquipo" ).submit(function( event ) {
+            $( "#inhabilitarEquipo" ).submit(function( event ) {
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/deshabilitarEquipo.php",
+                    url: "../controladores/controladorEquipoTrabajo.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -574,7 +574,7 @@ $( "#guardarDirectorio" ).submit(function( event ) {
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/nuevoDirectorio.php",
+                    url: "../controladores/controladorDirectorio.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         
@@ -600,11 +600,11 @@ $( "#guardarDirectorio" ).submit(function( event ) {
 
         })
 
-            $( "#deshabilitarDirectorio" ).submit(function( event ) {
+            $( "#inhabilitarDirectorio" ).submit(function( event ) {
         var parametros = $(this).serialize();
              $.ajax({
                     type: "POST",
-                    url: "consulta/deshabilitarDirectorio.php",
+                    url: "../controladores/controladorDirectorio.php",
                     data: parametros,
                      beforeSend: function(objeto){
                         

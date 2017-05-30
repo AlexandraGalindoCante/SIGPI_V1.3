@@ -48,7 +48,6 @@ class controladorInforme{
 //seccion de control para determinar que funcion se debe utilizar
 
 $controlador = new controladorInforme;
-
 if(isset($_REQUEST['desc'])){
 	$funcion = 'registrar';
 }elseif(isset($_REQUEST['idInforme'])){

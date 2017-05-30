@@ -1,5 +1,5 @@
  
-<form id="guardarDirectorio">
+<form id="guardarDirectorio" >
  <div class="modal " id="registroDirectorio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -12,6 +12,7 @@
           <div class="modal-body">
           <div id="datos_ajax_register"></div>
             <input type="hidden" name="idMaterial" id="idMaterial"> 
+            <input type="hidden" name="funcion" value="registrar"> 
             <div class="form-group">
               <label> Proveedor:</label>
               <select class="form-control" required name="idProveedor">

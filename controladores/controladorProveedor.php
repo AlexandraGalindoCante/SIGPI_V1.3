@@ -18,8 +18,8 @@ class controladorProveedor{
 	}
 
 	public function inhabilitar(){
-		$empleado = new Proveedor($_REQUEST['idProveedor']);
-		$empleado->inhabilitarProveedor();
+		$model = new Proveedor($_REQUEST['idProveedor']);
+		$model->inhabilitarProveedor();
 	}
 
 

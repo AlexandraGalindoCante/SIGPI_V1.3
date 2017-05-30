@@ -1,9 +1,10 @@
-<form id="deshabilitarEquipo">
+<form id="inhabilitarEquipo">
 <div class="modal " id="eliminarEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
       <div class="modal-body">
+      <input type="hidden" name="funcion" value="inhabilitar"> 
       <input type="hidden" id="emp" name="idEmpleado">
       <input type="hidden" id="pro" name="idProyecto">
       <h2 class="text-center text-muted">¿Esta seguro?</h2>

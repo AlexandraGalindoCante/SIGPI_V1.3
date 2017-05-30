@@ -109,8 +109,8 @@ _idEmpleado int,
 _idProyecto int
 )
 BEGIN
-    insert into equipoTrabajo (Empleado_idEmpleado, Proyecto_idProyecto)
-    values _idEmpleado, _idProyecto;
+    insert into equipoTrabajo (Empleado_idEmpleado, Proyecto_idProyecto, visibilidad)
+    values (_idEmpleado, _idProyecto, 1);
 END//
 
 --eliminarEquipo
@@ -122,7 +122,34 @@ _idEmpleado int,
 _idProyecto int
 )
 BEGIN
-    delete from  equipoTrabajo  where (Empleado_idEmpleado=_idEmpleado) && ( proyecto_idProyecto=_idProyecto);
+    DELETE FROM equipoTrabajo  
+    WHERE (Empleado_idEmpleado = _idEmpleado) AND ( proyecto_idProyecto = _idProyecto);
+END//
+
+--crear directorio
+
+
+DELIMITER //
+CREATE PROCEDURE nuevoDirectorio(
+_idMaterial int,
+_idProveedor int
+)
+BEGIN
+    insert into DirectorioProveedor (Material_idMaterial, Proveedor_idProveedor, visibilidad)
+    values (_idMaterial, _idProveedor, 1);
+END//
+
+--eliminarDirectorio
+
+DELIMITER //
+CREATE PROCEDURE eliminarDirectorio
+(
+_idMaterial int,
+_idProveedor int
+)
+BEGIN
+    DELETE FROM DirectorioProveedor 
+    WHERE (Material_idMaterial = _idMaterial) AND ( Proveedor_idProveedor = _idProveedor);
 END//
 
 --registrarProveedor
