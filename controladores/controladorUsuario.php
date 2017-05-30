@@ -14,6 +14,15 @@ class controladorUsuario{
 		header('Location: ../index.php');
 	}
 
+	public function cambiarContrasena(){
+		$model = new Usuario;
+		$model->setContrasena($_REQUEST['passVieja']);
+		if($model->validarContrasena()){
+			$model->setContrasena($_REQUEST['passNueva']);
+			$model->cambiarContrasena();
+		}
+	}
+
 }
 
 //seccion de control para determinar que funcion se debe utilizar
@@ -22,6 +31,8 @@ $controlador = new controladorUsuario;
 
 if(isset($_REQUEST['email'])){
 	$funcion = 'recuperarContrasena';
+}elseif(isset($_REQUEST['passNueva']) && isset($_REQUEST['passVieja'])){
+	$funcion = 'cambiarContrasena';
 }
 
 if(method_exists($controlador, $funcion)){

@@ -777,3 +777,24 @@ $( "#guardarDirectorio" ).submit(function( event ) {
             });
           event.preventDefault();
         });
+
+//cambiar contraseña
+        $( "#cambiarCont" ).submit(function( event ) {
+        var parametros = $(this).serialize();
+             $.ajax({
+                    type: "POST",
+                    url: "../controladores/controladorUsuario.php",
+                    data: parametros,
+                     beforeSend: function(objeto){
+                       
+                      },
+                    success: function(datos){
+                    
+                    $('#cambiarContrasena').modal('hide');
+                    $('.modal-backdrop').remove();
+
+                    location.reload();
+                  }
+            });
+          event.preventDefault();
+        });

@@ -89,6 +89,17 @@ BEGIN
     where nombreUsuario = _email AND visibilidad = 1;
 END 
 
+
+DELIMITER //
+CREATE PROCEDURE buscarUsuario(
+ _idEmpleado VARCHAR(50)
+ )
+BEGIN
+    select contrasena, nombreUsuario
+    from Empleado inner join usuario on Empleado.Usuario_idUsuario = Usuario.idUsuario 
+    where idEmpleado = _idEmpleado AND usuario.visibilidad = 1;
+END //
+
 --crear equipos
 
 

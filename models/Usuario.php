@@ -14,6 +14,10 @@ class Usuario {
 		$this->nombreUsuario = $email;
 	}
 
+	public function setContrasena($pass){
+		$this->contrasena = $pass;
+	}
+
 	public function generarContrasena(){
 		return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,10);
 	}
@@ -44,6 +48,36 @@ class Usuario {
 		} 
 
 	}
+
+	public function validarContrasena(){
+		session_start();
+		$datos = new Datos();
+		$mysql = $datos->conectar();	
+		$idEmpleado = $_SESSION['idEmpleado'];	
+		$consulta=$mysql->query("CALL buscarUsuario('$idEmpleado')");
+		$mysql = $datos->Desconectar($mysql);
+		if ($vector=mysqli_fetch_array($consulta) ) {
+			if(password_verify($this->contrasena, $vector['contrasena'])){
+				$this->setNombreUsuario($vector['nombreUsuario']);
+				return True;
+			}
+			else {
+				return false;
+			}
+		}
+		else{
+			return False;
+		}
+	}
+
+	public function cambiarContrasena(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$enc_contrasena = password_hash($this->contrasena, PASSWORD_DEFAULT);
+		$mysql->query("CALL cambiarContrasena('$this->nombreUsuario', '$enc_contrasena')");
+		$mysql = $datos->Desconectar($mysql);
+	}
+
 
 }
 

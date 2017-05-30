@@ -48,10 +48,8 @@ include ("consulta/libSigpi.php");
 
 <body>
     <?php 
-include('modals/md_registrarProyecto.php');
-include('modals/md_modificarProyecto.php');
-include('modals/md_eliminarProyecto.php');
-include('modals/md_registrarEquipo.php');
+
+include('modals/md_cambiarContrasena.php');
 
 ?>
     <div id="wrapper">
@@ -146,25 +144,26 @@ include('modals/md_registrarEquipo.php');
         <div id="page-wrapper">
            
           
-
     <div class="container-fluid">
-       
-     
-    <div class='col-xs-6'>  
+        <div class='col-xs-12'>  
 
-                        
-     
+            <h3 class='text-right'>   
+                <button type="button" class="btn btn-tema btn-sm" data-toggle="modal" data-target="#cambiarContrasena" >
+                    Cambiar contraseña
+                </button>
+            </h3>
 
+        </div>
     </div>
- 
- 
-  </div>
 
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/app.js"></script>
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
