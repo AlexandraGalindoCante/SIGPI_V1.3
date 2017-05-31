@@ -70,8 +70,8 @@ class Empleado extends Usuario {
 			'Reply-To: remitente@dominio.com'."\n".
 			'X-Mailer: PHP/'.phpversion();
 			mail("$this->correoElectronico", $asunto, $mensaje, $cab);
-
 		*/
+		
 		$mysql->query("CALL registrarEmpleado('$this->nombreCompleto','$enc_contrasena','$this->documento','$this->telefonoFijo','$this->telefonoCelular','$this->correoElectronico','$this->direccion','$this->idRol')") or die($mysql->error);
 		$mysql = $datos->Desconectar($mysql);
 	}

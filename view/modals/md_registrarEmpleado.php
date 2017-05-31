@@ -82,7 +82,7 @@
               <select class="form-control" required name="idRol">
                 <?php
                   $mysql=conectar();
-                  $registro=$mysql->query("select idRol, nombre from rol") or die($mysql->error);
+                  $registro=$mysql->query("select idRol, nombre from Rol") or die($mysql->error);
                   while($reg=$registro->fetch_array()){
                     echo "<option value=\"".$reg['idRol']."\">".$reg['nombre']."</option>";
                   }

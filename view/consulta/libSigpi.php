@@ -1,7 +1,7 @@
 <?php
 
 	function conectar(){
-		$mysql = new mysqli("localhost","root","","sigpi");
+		$mysql = new mysqli("localhost","id1827931_administrador","sena2017*","id1827931_sigpi");
 		if ($mysql->connect_error)
 			die('Problemas con la conexion a la base de datos');
 

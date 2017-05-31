@@ -24,7 +24,7 @@ include ("libSigpi.php");
 		$total_pages = ceil($numrows/$per_page);
 		$reload = 'gestionEmpleados.php';
 		//consulta principal para recuperar los datos
-		$query = mysqli_query($con,"SELECT * FROM Empleado inner join rol on empleado.Rol_idRol = rol.idRol where Empleado.visibilidad = '1' order by nombreCompleto asc LIMIT $offset,$per_page");
+		$query = mysqli_query($con,"SELECT * FROM Empleado inner join Rol on Empleado.Rol_idRol = Rol.idRol where Empleado.visibilidad = '1' order by nombreCompleto asc LIMIT $offset,$per_page");
 		
 		if ($numrows>0){
 			?>

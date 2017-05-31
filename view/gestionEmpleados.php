@@ -47,7 +47,7 @@ include ("consulta/libSigpi.php");
 </head>
 
 <body>
-    <?php 
+<?php 
 include('modals/md_registrarEmpleado.php');
 include('modals/md_modificarEmpleado.php');
 include('modals/md_eliminarEmpleado.php')

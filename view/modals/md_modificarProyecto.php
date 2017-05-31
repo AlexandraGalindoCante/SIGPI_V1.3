@@ -38,7 +38,7 @@
               <select class="form-control" required name="cliente" id="cliente">
                 <?php
                   $mysql=conectar();
-                  $registro=$mysql->query("select idCliente, nombre from cliente where visibilidad = '1'") or die($mysql->error);
+                  $registro=$mysql->query("select idCliente, nombre from Cliente where visibilidad = '1'") or die($mysql->error);
                   while($reg=$registro->fetch_array()){
                     echo "<option value=\"".$reg['idCliente']."\">".$reg['nombre']."</option>";
                   }
@@ -56,7 +56,7 @@
               <select class="form-control" required name="estado" id="idEstado">
                 <?php
                   $mysql=conectar();
-                  $registro=$mysql->query("select idEstadoProyecto, nombre from estadoProyecto") or die($mysql->error);
+                  $registro=$mysql->query("select idEstadoProyecto, nombre from EstadoProyecto") or die($mysql->error);
                   while($reg=$registro->fetch_array()){
                     echo "<option value=\"".$reg['idEstadoProyecto']."\">".$reg['nombre']."</option>";
                   }

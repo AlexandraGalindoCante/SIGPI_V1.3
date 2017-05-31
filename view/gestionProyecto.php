@@ -37,12 +37,12 @@ include ("consulta/libSigpi.php");
 </head>
 
 <body>
-    <?php 
+
+<?php 
 include('modals/md_registrarProyecto.php');
 include('modals/md_modificarProyecto.php');
 include('modals/md_eliminarProyecto.php');
 include('modals/md_registrarEquipo.php');
-
 ?>
 
        <div id="wrapper">
