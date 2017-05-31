@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2017 a las 14:39:06
+-- Tiempo de generación: 31-05-2017 a las 12:59:51
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -24,7 +24,7 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE  PROCEDURE `actualizarEmpleado` (`_nombreCompleto` VARCHAR(50), `_documento` VARCHAR(50), `_telefonoFijo` VARCHAR(50), `_telefonoCelular` VARCHAR(50), `_correoElectronico` VARCHAR(50), `_direccion` VARCHAR(50), `_idRol` INT, `_idUsuario` INT, `_idEmpleado` INT)  BEGIN
+CREATE PROCEDURE `actualizarEmpleado` (`_nombreCompleto` VARCHAR(50), `_documento` VARCHAR(50), `_telefonoFijo` VARCHAR(50), `_telefonoCelular` VARCHAR(50), `_correoElectronico` VARCHAR(50), `_direccion` VARCHAR(50), `_idRol` INT, `_idUsuario` INT, `_idEmpleado` INT)  BEGIN
 	UPDATE Usuario SET nombreUsuario = _correoElectronico WHERE idUsuario = _idUsuario;	
 	
     UPDATE Empleado SET nombreCompleto = _nombreCompleto, documento = _documento, telefonoFijo = _telefonoFijo, 
@@ -32,68 +32,68 @@ CREATE  PROCEDURE `actualizarEmpleado` (`_nombreCompleto` VARCHAR(50), `_documen
     WHERE idEmpleado = _idEmpleado;
 END$$
 
-CREATE  PROCEDURE `actualizarProveedor` (`_nombre` VARCHAR(50), `_asesor` VARCHAR(50), `_telefono` VARCHAR(50), `_correoElectronico` VARCHAR(50), `_direccion` VARCHAR(50), `_idProveedor` INT)  BEGIN
+CREATE PROCEDURE `actualizarProveedor` (`_nombre` VARCHAR(50), `_asesor` VARCHAR(50), `_telefono` VARCHAR(50), `_correoElectronico` VARCHAR(50), `_direccion` VARCHAR(50), `_idProveedor` INT)  BEGIN
     UPDATE Proveedor SET nombre = _nombre, asesor = _asesor, telefono = _telefono,
      correoElectronico = _correoElectronico, direccion =_direccion WHERE idProveedor = _idProveedor;
 END$$
 
-CREATE  PROCEDURE `actualizarProyecto` (`_nombre` VARCHAR(50), `_inicio` DATE, `_fin` DATE, `_avance` VARCHAR(50), `_cliente` INT, `_estado` INT, `_idProyecto` INT)  BEGIN
+CREATE PROCEDURE `actualizarProyecto` (`_nombre` VARCHAR(50), `_inicio` DATE, `_fin` DATE, `_avance` VARCHAR(50), `_cliente` INT, `_estado` INT, `_idProyecto` INT)  BEGIN
     UPDATE Proyecto SET nombre = _nombre, fechaInicio = _inicio, fechaEntrega = _fin,
      porcentajeAvance = _avance, Cliente_idCliente =_cliente, estadoProyecto_idEstadoProyecto = _estado WHERE idProyecto = _idProyecto;
 END$$
 
-CREATE  PROCEDURE `buscarCorreo` (`_email` VARCHAR(50))  BEGIN
+CREATE PROCEDURE `buscarCorreo` (`_email` VARCHAR(50))  BEGIN
     SELECT count(*) AS usuario
     FROM Usuario
     where nombreUsuario = _email AND visibilidad = 1;
 END$$
 
-CREATE  PROCEDURE `buscarUsuario` (`_idEmpleado` VARCHAR(50))  BEGIN
+CREATE PROCEDURE `buscarUsuario` (`_idEmpleado` VARCHAR(50))  BEGIN
     select contrasena, nombreUsuario
     from Empleado inner join usuario on Empleado.Usuario_idUsuario = Usuario.idUsuario 
     where idEmpleado = _idEmpleado AND usuario.visibilidad = 1;
 END$$
 
-CREATE  PROCEDURE `cambiarContrasena` (`_email` VARCHAR(50), `_pass` VARCHAR(255))  BEGIN
+CREATE PROCEDURE `cambiarContrasena` (`_email` VARCHAR(50), `_pass` VARCHAR(255))  BEGIN
     UPDATE usuario
     SET contrasena = _pass
     where nombreUsuario = _email AND visibilidad = 1;
 END$$
 
-CREATE  PROCEDURE `consultarIdRol` (`_nombre` VARCHAR(45))  SELECT idRol FROM rol WHERE nombre = _nombre;$$
+CREATE PROCEDURE `consultarIdRol` (`_nombre` VARCHAR(45))  SELECT idRol FROM rol WHERE nombre = _nombre;$$
 
-CREATE  PROCEDURE `eliminarDirectorio` (`_idMaterial` INT, `_idProveedor` INT)  BEGIN
+CREATE PROCEDURE `eliminarDirectorio` (`_idMaterial` INT, `_idProveedor` INT)  BEGIN
     DELETE FROM DirectorioProveedor 
     WHERE (Material_idMaterial = _idMaterial) AND ( Proveedor_idProveedor = _idProveedor);
 END$$
 
-CREATE  PROCEDURE `eliminarEquipo` (`_idEmpleado` INT, `_idProyecto` INT)  BEGIN
+CREATE PROCEDURE `eliminarEquipo` (`_idEmpleado` INT, `_idProyecto` INT)  BEGIN
     DELETE FROM equipoTrabajo  
     WHERE (Empleado_idEmpleado = _idEmpleado) AND ( proyecto_idProyecto = _idProyecto);
 END$$
 
-CREATE  PROCEDURE `eliminarInforme` (`_idArchivo` INT)  BEGIN
+CREATE PROCEDURE `eliminarInforme` (`_idArchivo` INT)  BEGIN
     UPDATE Informe SET visibilidad = 0 WHERE idArchivo = _idArchivo;
 END$$
 
-CREATE  PROCEDURE `inhabilitarEmpleado` (`_idEmpleado` INT)  BEGIN
+CREATE PROCEDURE `inhabilitarEmpleado` (`_idEmpleado` INT)  BEGIN
 	UPDATE Usuario SET visibilidad = 0 WHERE idUsuario = (SELECT Usuario_idUsuario FROM Empleado WHERE idEmpleado = _idEmpleado);	
 	
     UPDATE Empleado SET visibilidad = 0 WHERE idEmpleado = _idEmpleado;
 END$$
 
-CREATE  PROCEDURE `inhabilitarPlano` (`_idArchivo` INT)  BEGIN
+CREATE PROCEDURE `inhabilitarPlano` (`_idArchivo` INT)  BEGIN
     UPDATE Plano SET visibilidad = 0 WHERE idPlano = (SELECT Plano_idPlano FROM ArchivoPlano WHERE idArchivo = _idArchivo);
     UPDATE Orden SET visibilidad = 0 WHERE Plano_idPlano = (SELECT Plano_idPlano FROM ArchivoPlano WHERE idArchivo = _idArchivo);
     UPDATE ArchivoPlano SET visibilidad = 0 WHERE  idArchivo = _idArchivo;
 END$$
 
-CREATE  PROCEDURE `inhabilitarProveedor` (`_idProveedor` INT)  BEGIN
+CREATE PROCEDURE `inhabilitarProveedor` (`_idProveedor` INT)  BEGIN
     UPDATE Proveedor SET visibilidad = 0 WHERE idProveedor = _idProveedor;
     DELETE FROM DirectorioProveedor WHERE Proveedor_idProveedor = _idProveedor;	
 END$$
 
-CREATE  PROCEDURE `inhabilitarProyecto` (`_idProyecto` INT)  BEGIN
+CREATE PROCEDURE `inhabilitarProyecto` (`_idProyecto` INT)  BEGIN
     UPDATE Proyecto SET visibilidad = 0 WHERE idProyecto = _idProyecto;  
     UPDATE Plano SET visibilidad = 0 WHERE Proyecto_idProyecto = _idProyecto;  
     UPDATE ArchivoPlano SET visibilidad = 0 WHERE Plano_idPlano = (SELECT idPlano FROM Plano WHERE Proyecto_idProyecto = _idProyecto);  
@@ -101,24 +101,24 @@ CREATE  PROCEDURE `inhabilitarProyecto` (`_idProyecto` INT)  BEGIN
     UPDATE EquipoTrabajo SET visibilidad = 0 WHERE Proyecto_idProyecto = _idProyecto; 
 END$$
 
-CREATE  PROCEDURE `login` (`_email` VARCHAR(50))  BEGIN
+CREATE PROCEDURE `login` (`_email` VARCHAR(50))  BEGIN
     select idEmpleado, nombreCompleto, Rol_idRol, nombre as rol, contrasena
     from Empleado inner join usuario on Empleado.Usuario_idUsuario = Usuario.idUsuario 
     inner join rol on Empleado.Rol_idRol = Rol.idRol 
     where nombreUsuario = _email AND usuario.visibilidad = 1;
 END$$
 
-CREATE  PROCEDURE `nuevoDirectorio` (`_idMaterial` INT, `_idProveedor` INT)  BEGIN
+CREATE PROCEDURE `nuevoDirectorio` (`_idMaterial` INT, `_idProveedor` INT)  BEGIN
     insert into DirectorioProveedor (Material_idMaterial, Proveedor_idProveedor, visibilidad)
     values (_idMaterial, _idProveedor, 1);
 END$$
 
-CREATE  PROCEDURE `nuevoEquipo` (`_idEmpleado` INT, `_idProyecto` INT)  BEGIN
+CREATE PROCEDURE `nuevoEquipo` (`_idEmpleado` INT, `_idProyecto` INT)  BEGIN
     insert into equipoTrabajo (Empleado_idEmpleado, Proyecto_idProyecto, visibilidad)
     values (_idEmpleado, _idProyecto, 1);
 END$$
 
-CREATE  PROCEDURE `registrarEmpleado` (`_nombreCompleto` VARCHAR(50), `_contrasena` VARCHAR(255), `_documento` VARCHAR(50), `_telefonoFijo` VARCHAR(50), `_telefonoCelular` VARCHAR(50), `_correoElectronico` VARCHAR(50), `_direccion` VARCHAR(50), `_idRol` INT)  BEGIN
+CREATE PROCEDURE `registrarEmpleado` (`_nombreCompleto` VARCHAR(50), `_contrasena` VARCHAR(255), `_documento` VARCHAR(50), `_telefonoFijo` VARCHAR(50), `_telefonoCelular` VARCHAR(50), `_correoElectronico` VARCHAR(50), `_direccion` VARCHAR(50), `_idRol` INT)  BEGIN
 	INSERT INTO Usuario(nombreUsuario, contrasena, visibilidad) VALUES( _correoElectronico, _contrasena, 1);	
 	
     INSERT INTO Empleado (nombreCompleto, documento, telefonoFijo, 
@@ -128,12 +128,12 @@ CREATE  PROCEDURE `registrarEmpleado` (`_nombreCompleto` VARCHAR(50), `_contrase
      _direccion, _idRol, (SELECT idUsuario FROM Usuario WHERE nombreUsuario = _correoElectronico AND visibilidad = 1), 1);
 END$$
 
-CREATE  PROCEDURE `registrarInforme` (`_nombre` VARCHAR(45), `_tipoArchivo` VARCHAR(100), `_tamano` VARCHAR(45), `_ruta` VARCHAR(100), `_idEmpleado` INT, `_idProyecto` INT)  BEGIN
+CREATE PROCEDURE `registrarInforme` (`_nombre` VARCHAR(45), `_tipoArchivo` VARCHAR(100), `_tamano` VARCHAR(45), `_ruta` VARCHAR(100), `_idEmpleado` INT, `_idProyecto` INT)  BEGIN
     INSERT INTO Informe (nombre, tipoArchivo, tamano, ruta, Empleado_idEmpleado, Proyecto_idProyecto, visibilidad)
     VALUES (_nombre, _tipoArchivo, _tamano, _ruta, _idEmpleado, _idProyecto, 1); 
 END$$
 
-CREATE  PROCEDURE `registrarPlano` (`_nombre` VARCHAR(45), `_tipoArchivo` VARCHAR(100), `_tamano` VARCHAR(45), `_ruta` VARCHAR(100), `_idEmpleado` INT, `_idProyecto` INT)  BEGIN
+CREATE PROCEDURE `registrarPlano` (`_nombre` VARCHAR(45), `_tipoArchivo` VARCHAR(100), `_tamano` VARCHAR(45), `_ruta` VARCHAR(100), `_idEmpleado` INT, `_idProyecto` INT)  BEGIN
     INSERT INTO Plano (Proyecto_idProyecto, descripcion, visibilidad)
     VALUES (_idProyecto, _nombre, 1);
 
@@ -141,12 +141,12 @@ CREATE  PROCEDURE `registrarPlano` (`_nombre` VARCHAR(45), `_tipoArchivo` VARCHA
     VALUES (_tipoArchivo, _tamano, _ruta, _idEmpleado, (SELECT idPlano FROM Plano WHERE descripcion = _nombre AND Proyecto_idProyecto = _idProyecto),1);
 END$$
 
-CREATE  PROCEDURE `registrarProveedor` (`_nombre` VARCHAR(50), `_asesor` VARCHAR(50), `_telefono` VARCHAR(50), `_correoElectronico` VARCHAR(50), `_direccion` VARCHAR(50))  BEGIN
+CREATE PROCEDURE `registrarProveedor` (`_nombre` VARCHAR(50), `_asesor` VARCHAR(50), `_telefono` VARCHAR(50), `_correoElectronico` VARCHAR(50), `_direccion` VARCHAR(50))  BEGIN
     INSERT INTO Proveedor (nombre, asesor, telefono, correoElectronico, direccion, visibilidad) 
     VALUES(_nombre, _asesor, _telefono, _correoElectronico, _direccion, 1);
 END$$
 
-CREATE  PROCEDURE `registrarProyecto` (`_nombre` VARCHAR(50), `_inicio` DATE, `_fin` DATE, `_avance` VARCHAR(50), `_cliente` INT, `_estado` INT, `_idEmpleado` INT)  BEGIN
+CREATE PROCEDURE `registrarProyecto` (`_nombre` VARCHAR(50), `_inicio` DATE, `_fin` DATE, `_avance` VARCHAR(50), `_cliente` INT, `_estado` INT, `_idEmpleado` INT)  BEGIN
     INSERT INTO Proyecto (nombre,fechaInicio,fechaEntrega,porcentajeAvance,Cliente_idCliente,estadoProyecto_idEstadoProyecto,visibilidad)
     VALUES(_nombre, _inicio, _fin, _avance, _cliente, _estado, 1);
     INSERT INTO equipoTrabajo (Empleado_idEmpleado, Proyecto_idProyecto,visibilidad)
@@ -177,7 +177,6 @@ CREATE TABLE `archivoplano` (
 --
 
 
-
 -- --------------------------------------------------------
 
 --
@@ -198,8 +197,6 @@ CREATE TABLE `cliente` (
 -- Volcado de datos para la tabla `cliente`
 --
 
-
-
 -- --------------------------------------------------------
 
 --
@@ -215,8 +212,6 @@ CREATE TABLE `directorioproveedor` (
 --
 -- Volcado de datos para la tabla `directorioproveedor`
 --
-
-
 
 -- --------------------------------------------------------
 
@@ -241,6 +236,9 @@ CREATE TABLE `empleado` (
 -- Volcado de datos para la tabla `empleado`
 --
 
+INSERT INTO `empleado` (`idEmpleado`, `nombreCompleto`, `documento`, `telefonoFijo`, `telefonoCelular`, `correoElectronico`, `direccion`, `Rol_idRol`, `Usuario_idUsuario`, `visibilidad`) VALUES
+(1, 'Gerente', '1234', '42342', '98121', 'gerente@gmail.com', 'calle 3', 2, 1, 1);
+
 
 -- --------------------------------------------------------
 
@@ -257,7 +255,6 @@ CREATE TABLE `equipotrabajo` (
 --
 -- Volcado de datos para la tabla `equipotrabajo`
 --
-
 
 
 -- --------------------------------------------------------
@@ -303,8 +300,6 @@ CREATE TABLE `informe` (
 --
 -- Volcado de datos para la tabla `informe`
 --
-
-
 
 -- --------------------------------------------------------
 
@@ -392,8 +387,6 @@ CREATE TABLE `proveedor` (
 -- Volcado de datos para la tabla `proveedor`
 --
 
-
-
 -- --------------------------------------------------------
 
 --
@@ -458,8 +451,6 @@ CREATE TABLE `tramite` (
 -- Volcado de datos para la tabla `tramite`
 --
 
-
-
 -- --------------------------------------------------------
 
 --
@@ -478,7 +469,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nombreUsuario`, `contrasena`, `visibilidad`) VALUES
-(31, 'gerente@gmail.com', '$2y$10$etxCN1jfFmZCTGqbbdHw7.sIpvur5RfFVW/Lumn/CCk8oRWqaBh9.', 1);
+(1, 'gerente@gmail.com', '$2y$10$etxCN1jfFmZCTGqbbdHw7.sIpvur5RfFVW/Lumn/CCk8oRWqaBh9.', 1);
+
 
 --
 -- Índices para tablas volcadas
@@ -607,7 +599,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `archivoplano`
 --
 ALTER TABLE `archivoplano`
-  MODIFY `idArchivo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo identificador unico del plano', AUTO_INCREMENT=11;
+  MODIFY `idArchivo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo identificador unico del plano', AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
@@ -627,7 +619,7 @@ ALTER TABLE `estadoproyecto`
 -- AUTO_INCREMENT de la tabla `informe`
 --
 ALTER TABLE `informe`
-  MODIFY `idArchivo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo unico identificador del archivo', AUTO_INCREMENT=5;
+  MODIFY `idArchivo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo unico identificador del archivo', AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `material`
 --
@@ -642,7 +634,7 @@ ALTER TABLE `orden`
 -- AUTO_INCREMENT de la tabla `plano`
 --
 ALTER TABLE `plano`
-  MODIFY `idPlano` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo identificador unico del plano', AUTO_INCREMENT=13;
+  MODIFY `idPlano` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo identificador unico del plano', AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
@@ -652,7 +644,7 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `idProyecto` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo identificador unico para proyecto', AUTO_INCREMENT=7;
+  MODIFY `idProyecto` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Codigo identificador unico para proyecto', AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `rol`
 --
