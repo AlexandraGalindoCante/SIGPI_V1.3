@@ -19,7 +19,7 @@ include ("libSigpi.php");
 		$adjacents  = 4; //brecha entre páginas después de varios adyacentes
 		$offset = ($page - 1) * $per_page;
 		//Cuenta el número total de filas de la tabla*/
-		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM cliente where visibilidad = '1' ");
+		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM Cliente where visibilidad = '1' ");
 		if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 		$total_pages = ceil($numrows/$per_page);
 		$reload = 'gestionCliente.php';

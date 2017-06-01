@@ -24,7 +24,7 @@ include ("libSigpi.php");
         $total_pages = ceil($numrows/$per_page);
         $reload = 'gestionEmpleados.php';
         //consulta principal para recuperar los datos
-        $query = mysqli_query($con," select Tramite.tipo, Tramite.fecha, Tramite.cantidadAsignada, Empleado.nombreCompleto, Material.referencia, Proyecto.nombre, Plano.descripcion from Tramite inner join Empleado on Tramite.Empleado_idEmpleado = Empleado.idEmpleado inner join Material on Material.idMaterial = Tramite.Material_idMaterial inner join ordenTramitada on ordenTramitada.Tramite_idTramite = Tramite.idTramite inner join Orden on ordenTramitada.Orden_idOrden = Orden.idOrden inner join Plano on Orden.Plano_idPlano = Plano.idPlano inner join Proyecto on Proyecto.idProyecto = Plano.Proyecto_idProyecto LIMIT $offset,$per_page");
+        $query = mysqli_query($con," select Tramite.tipo, Tramite.fecha, Tramite.cantidadAsignada, Empleado.nombreCompleto, Material.referencia, Proyecto.nombre, Plano.descripcion from Tramite inner join Empleado on Tramite.Empleado_idEmpleado = Empleado.idEmpleado inner join Material on Material.idMaterial = Tramite.Material_idMaterial inner join OrdenTramitada on OrdenTramitada.Tramite_idTramite = Tramite.idTramite inner join Orden on ordenTramitada.Orden_idOrden = Orden.idOrden inner join Plano on Orden.Plano_idPlano = Plano.idPlano inner join Proyecto on Proyecto.idProyecto = Plano.Proyecto_idProyecto LIMIT $offset,$per_page");
         
         if ($numrows>0){
             ?>

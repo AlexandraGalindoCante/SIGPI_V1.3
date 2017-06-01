@@ -14,7 +14,7 @@ if ($cantidadDisponible>= $cantidadRequerida) {
 			values (CURDATE(),'$cantidadRequerida','Salida', '$idEmpleado','$idMaterial','1')")
 			or die($mysql->error);
 
-	$mysql->query("insert into ordenTramitada (Orden_idOrden, Tramite_idTramite,visibilidad) values ('$idOrden', (select max(idTramite) as idTramite from tramite),'1')")
+	$mysql->query("insert into OrdenTramitada (Orden_idOrden, Tramite_idTramite,visibilidad) values ('$idOrden', (select max(idTramite) as idTramite from tramite),'1')")
 	or die($mysql->error);
 
 	$mysql->query("update Material set cantidadDisponible = '$cantidadDiferencia' where idMaterial = '$idMaterial'") or die($mysql->error);

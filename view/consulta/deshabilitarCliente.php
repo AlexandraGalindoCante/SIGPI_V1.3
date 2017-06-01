@@ -5,7 +5,7 @@ include ("libSigpi.php");
 $mysql=conectar();
 
 
-$mysql->query("Update cliente set visibilidad = '0' where idCliente= '$_REQUEST[idCliente]' ") or 
+$mysql->query("Update Cliente set visibilidad = '0' where idCliente= '$_REQUEST[idCliente]' ") or 
 die ($mysql->error);
 
 

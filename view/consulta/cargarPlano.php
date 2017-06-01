@@ -24,7 +24,7 @@ include ("libSigpi.php");
 		$total_pages = ceil($numrows/$per_page);
 		$reload = 'gestionEquipo.php';
 		//consulta principal para recuperar los datos
-		$query = mysqli_query($con," select idPlano, descripcion, idArchivo, tipoArchivo, tamano, ruta, Empleado_idEmpleado, Plano_idPlano, nombreCompleto from archivoPlano inner join plano on ArchivoPlano.Plano_idPlano = Plano.idPlano inner join proyecto on plano.Proyecto_idProyecto = proyecto.idProyecto inner join Empleado on idEmpleado = Empleado_idEmpleado where idProyecto = '$_SESSION[idProyecto]'  LIMIT $offset,$per_page");
+		$query = mysqli_query($con," select idPlano, descripcion, idArchivo, tipoArchivo, tamano, ruta, Empleado_idEmpleado, Plano_idPlano, nombreCompleto from ArchivoPlano inner join Plano on ArchivoPlano.Plano_idPlano = Plano.idPlano inner join Proyecto on Plano.Proyecto_idProyecto = Proyecto.idProyecto inner join Empleado on idEmpleado = Empleado_idEmpleado where idProyecto = '$_SESSION[idProyecto]'  LIMIT $offset,$per_page");
 		
 		if ($numrows>0){
 			?>
@@ -49,7 +49,7 @@ include ("libSigpi.php");
 						<a target="_blank" href="<?php echo $row['ruta']; ?>"><button type="button" class="btn btn-tema" ><i class="fa fa-download"></i> Descargar </button></a>
 					</td>
 					<td>
-						<form method="post" action="CONSULTA/asignarSesion.php">
+						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="idPlano" value="<?php echo $row['idPlano'] ?>">
 						<button type="submit" class="bton btn-tema" ><i class='glyphicon glyphicon-user'></i> Orden </button>
 						</form>

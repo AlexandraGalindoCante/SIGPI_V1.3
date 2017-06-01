@@ -24,7 +24,7 @@ include ("libSigpi.php");
 		$total_pages = ceil($numrows/$per_page);
 		$reload = 'gestionOrden.php';
 		//consulta principal para recuperar los datos
-		$query = mysqli_query($con,"select idOrden, cantidadRequerida, cantidadDisponible, cantidadConsumida, estado, Material_idMaterial, Plano_idPlano, referencia, especificaciones from orden inner join material on Material_idMaterial = idMaterial where Plano_idPlano = '$_SESSION[idPlano]' and Orden.visibilidad = '1' LIMIT $offset,$per_page");
+		$query = mysqli_query($con,"select idOrden, cantidadRequerida, cantidadDisponible, cantidadConsumida, estado, Material_idMaterial, Plano_idPlano, referencia, especificaciones from Orden inner join Material on Material_idMaterial = idMaterial where Plano_idPlano = '$_SESSION[idPlano]' and Orden.visibilidad = '1' LIMIT $offset,$per_page");
 		
 		if ($numrows>0){
 			?>

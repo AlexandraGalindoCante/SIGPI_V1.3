@@ -24,7 +24,7 @@ include ("libSigpi.php");
 		$total_pages = ceil($numrows/$per_page);
 		$reload = 'gestionEmpleados.php';
 		//consulta principal para recuperar los datos
-		$query = mysqli_query($con,"SELECT proyecto.nombre, estadoProyecto.nombre as estado, idEstadoProyecto, idproyecto, fechaInicio,fechaEntrega,porcentajeAvance,Cliente_idCliente, cliente.nombre as cliente, idCliente from estadoproyecto inner join proyecto on idEstadoProyecto =EstadoProyecto_idEstadoProyecto inner join cliente on proyecto.Cliente_idCliente = cliente.idCliente where Proyecto.visibilidad = '1' LIMIT $offset,$per_page");
+		$query = mysqli_query($con,"SELECT Proyecto.nombre, EstadoProyecto.nombre as estado, idEstadoProyecto, idproyecto, fechaInicio,fechaEntrega,porcentajeAvance,Cliente_idCliente, Cliente.nombre as cliente, idCliente from Estadoproyecto inner join Proyecto on idEstadoProyecto =EstadoProyecto_idEstadoProyecto inner join Cliente on Proyecto.Cliente_idCliente = Cliente.idCliente where Proyecto.visibilidad = '1' LIMIT $offset,$per_page");
 		
 		if ($numrows>0){
 			?>
@@ -61,19 +61,19 @@ include ("libSigpi.php");
 					</td>
 					<td><?php echo $row['estado'];?></td>
 					<td>
-						<form method="post" action="CONSULTA/asignarSesion.php">
+						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="infProyecto" value="<?php echo $row['idproyecto'] ?>">
 						<button type="submit" class="bton btn-tema" ><i class='fa fa-book'></i> Informe</button>
 						</form>
 					</td>
 					<td>
-						<form method="post" action="CONSULTA/asignarSesion.php">
+						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="idProyecto" value="<?php echo $row['idproyecto'] ?>">
 						<button type="submit" class="bton btn-tema" ><i class='fa fa-users'></i> Equipo </button>
 						</form>
 					</td>
 					<td>
-						<form method="post" action="CONSULTA/asignarSesion.php">
+						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="numProyecto" value="<?php echo $row['idproyecto'] ?>">
 						<button type="submit" class="bton btn-tema" ><i class='glyphicon glyphicon-user'></i> Planos</button>
 						</form>

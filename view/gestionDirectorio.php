@@ -147,7 +147,7 @@ include('modals/md_eliminarDirectorio.php');
 
    <?php 
 $con = conectar();
-    $query = mysqli_query($con, "SELECT referencia  from  material where idMaterial = '$_SESSION[idMaterial]'");
+    $query = mysqli_query($con, "SELECT referencia  from  Material where idMaterial = '$_SESSION[idMaterial]'");
     $row = mysqli_fetch_array($query);
 
 

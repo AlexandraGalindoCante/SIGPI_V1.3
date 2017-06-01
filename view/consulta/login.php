@@ -8,7 +8,7 @@ $con = conectar();
 
 
 $registro = $con->query("select idEmpleado, Empleado.visibilidad, nombreCompleto, Rol_idRol, nombre as rol
-	from Empleado inner join usuario on Empleado.Usuario_idUsuario = Usuario.idUsuario 
+	from Empleado inner join Usuario on Empleado.Usuario_idUsuario = Usuario.idUsuario 
 	inner join rol on Empleado.Rol_idRol = Rol.idRol 
 	where (nombreUsuario = '$_REQUEST[email]') && (contrasena = '$_REQUEST[password]') ") or die($mysql->error);
 

@@ -18,7 +18,7 @@
               <select class="form-control" required name="idProveedor">
                 <?php
                   $mysql=conectar();
-                  $registro=$mysql->query("select idProveedor, nombre from proveedor where visibilidad = '1'") or die($mysql->error);
+                  $registro=$mysql->query("select idProveedor, nombre from Proveedor where visibilidad = '1'") or die($mysql->error);
                   while($reg=$registro->fetch_array()){
                     echo "<option value=\"".$reg['idProveedor']."\">".$reg['nombre']."</option>";
                   

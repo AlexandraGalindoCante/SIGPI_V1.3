@@ -19,12 +19,12 @@ include ("libSigpi.php");
 		$adjacents  = 4; //brecha entre páginas después de varios adyacentes
 		$offset = ($page - 1) * $per_page;
 		//Cuenta el número total de filas de la tabla*/
-		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM Proyecto inner join equipoTrabajo on Proyecto.idProyecto = equipoTrabajo.Proyecto_idProyecto  where equipoTrabajo.visibilidad = '1' and equipoTrabajo.Empleado_idEmpleado = '$_SESSION[idEmpleado]' ");
+		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM Proyecto inner join EquipoTrabajo on Proyecto.idProyecto = EquipoTrabajo.Proyecto_idProyecto  where EquipoTrabajo.visibilidad = '1' and EquipoTrabajo.Empleado_idEmpleado = '$_SESSION[idEmpleado]' ");
 		if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 		$total_pages = ceil($numrows/$per_page);
 		$reload = 'gestionEmpleados.php';
 		//consulta principal para recuperar los datos
-		$query = mysqli_query($con," SELECT proyecto.nombre, estadoProyecto.nombre as estado, idEstadoProyecto, idproyecto, fechaInicio,fechaEntrega,porcentajeAvance,Cliente_idCliente, cliente.nombre as cliente, idCliente from estadoproyecto inner join proyecto on idEstadoProyecto=EstadoProyecto_idEstadoProyecto inner join cliente on proyecto.Cliente_idCliente = cliente.idCliente inner join equipoTrabajo on Proyecto.idProyecto = equipoTrabajo.Proyecto_idProyecto where Proyecto.visibilidad = '1' and equipoTrabajo.Empleado_idEmpleado = '$_SESSION[idEmpleado]' LIMIT $offset,$per_page");
+		$query = mysqli_query($con," SELECT Proyecto.nombre, EstadoProyecto.nombre as estado, idEstadoProyecto, idproyecto, fechaInicio,fechaEntrega,porcentajeAvance,Cliente_idCliente, Cliente.nombre as cliente, idCliente from Estadoproyecto inner join Proyecto on idEstadoProyecto=EstadoProyecto_idEstadoProyecto inner join Cliente on Proyecto.Cliente_idCliente = Cliente.idCliente inner join EquipoTrabajo on Proyecto.idProyecto = EquipoTrabajo.Proyecto_idProyecto where Proyecto.visibilidad = '1' and EquipoTrabajo.Empleado_idEmpleado = '$_SESSION[idEmpleado]' LIMIT $offset,$per_page");
 		
 		if ($numrows>0){
 			?>
@@ -62,7 +62,7 @@ include ("libSigpi.php");
 					<td><?php echo $row['estado'];?></td>
 
 					<td>
-						<form method="post" action="CONSULTA/asignarSesion.php">
+						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="numProyecto" value="<?php echo $row['idproyecto'] ?>">
 						<button type="submit" class="bton btn-tema" ><i class='glyphicon glyphicon-user'></i> Planos</button>
 						</form>
