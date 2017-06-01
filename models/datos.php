@@ -2,9 +2,9 @@
 class Datos{
 
 	private $host="localhost";
-	private $password="sena2017*";
-	private $user="id1827931_administrador";
-	private $dbName="id1827931_sigpi";
+	private $password="";
+	private $user="root";
+	private $dbName="sigpi";
 
 	public  function conectar(){
 		$mysql = new mysqli($this->host,$this->user,$this->password,$this->dbName);
