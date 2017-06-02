@@ -345,3 +345,11 @@ CREATE PROCEDURE consultarIdRol(
     SELECT idRol FROM rol WHERE nombre = _nombre;
 BEGIN
 END //
+
+
+--Consultas para reporte de materiales
+CREATE PROCEDURE `reporteEntradaMaterial` (`_idMaterial` INT)  BEGIN
+    SELECT t.fecha, t.cantidadAsignada, e.nombreCompleto
+    FROM Tramite AS t INNER JOIN Empleado AS e ON t.Empleado_idEmpleado = e.idEmpleado
+    WHERE t.Material_idMaterial = _idMaterial AND t.tipo = 'Entrada';
+END$$

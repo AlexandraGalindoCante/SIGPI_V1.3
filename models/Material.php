@@ -38,7 +38,9 @@ public function Material(){
 		$this->idMaterial=$idMaterial;
 	}
 
-
+	public function getId(){
+		return $this->idMaterial;
+	}
 
 	public function registrarMaterial(){
 

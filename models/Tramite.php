@@ -1,6 +1,6 @@
 <?php 
- include ("material.php");
- include ("empleado.php");
+ include ("Material.php");
+ include ("Empleado.php");
 
  class Tramite{
 
@@ -29,6 +29,19 @@ private $material;
 		$this->material=new Material($idMaterial);
 	}
 
+	public function setMaterial($idMaterial){
+		$this->material = new Material($idMaterial);
+	}
+
+	public function buscarEntradaMaterial(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$idMaterial = $this->material->getId();		
+		$consulta=$mysql->query("CALL reporteEntradaMaterial('$idMaterial')");
+		$mysql = $datos->Desconectar($mysql);
+		$vector=mysqli_fetch_array($consulta);
+		return $vector;
+	}
 
  }
 
