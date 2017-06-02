@@ -51,7 +51,7 @@ include ("libSigpi.php");
 						<td>
 						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="idMaterial" value="<?php echo $row['idMaterial'] ?>">
-						<button type="submit" class="bton btn-tema" ><i class='glyphicon glyphicon-user'></i> Directorio de proveedores </button>
+						<button type="submit" class="bton btn-tema" ><i class='glyphicon glyphicon-user'></i> Directorio</button>
 						</form>
 					</td>
 					<td>

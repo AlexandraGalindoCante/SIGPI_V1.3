@@ -91,7 +91,6 @@ class Empleado extends Usuario {
 	}
 
 	public function login(){
-		session_start();
 		$datos = new Datos();
 		$mysql = $datos->conectar();		
 		$login=$mysql->query("CALL login('$this->correoElectronico')");
