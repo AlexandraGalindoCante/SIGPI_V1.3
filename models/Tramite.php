@@ -39,8 +39,7 @@ private $material;
 		$idMaterial = $this->material->getId();		
 		$consulta=$mysql->query("CALL reporteEntradaMaterial('$idMaterial')");
 		$mysql = $datos->Desconectar($mysql);
-		$vector=mysqli_fetch_array($consulta);
-		return $vector;
+		return $consulta;
 	}
 
  }

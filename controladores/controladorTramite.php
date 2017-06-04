@@ -11,8 +11,9 @@ class controladorTramite{
 	public function reporteEntradaMaterial($idMaterial){
 		$model = new Tramite;
 		$model->setMaterial($idMaterial);
-		$tabla = $model->buscarEntradaMaterial();
-		return $tabla;
+		$consulta = $model->buscarEntradaMaterial();
+		
+		return $consulta;
 	}
 
 	public function inhabilitar(){

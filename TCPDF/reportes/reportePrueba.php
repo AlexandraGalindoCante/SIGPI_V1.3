@@ -93,8 +93,11 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // ---------------------------------------------------------
 include('../../controladores/controladorTramite.php');
 
+
+
 $controlador = new controladorTramite();
-$tabla = $controlador->reporteEntradaMaterial(2); 
+$consultaEntrada= $controlador->reporteEntradaMaterial(2); 
+
 // set font
 $pdf->SetFont('times', '', 14);
 
@@ -115,40 +118,66 @@ EOD;
 
 // create some HTML content
 
-$html = ' <table class="table table-bordered">
-              <thead>
-                <tr>
-                    <td> Proyecto</td>
-                    <td> Plano </td>
-                    <td> Material</td>
-                    <td> Cantidad asignada </td>
-                    <td> Cantidad consumida </td>
-                    <td> Devolucion </td>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-            while($tabla){
-                ?>
-                <tr>
-                    <td><?php echo $tabla["fecha"];?></td>
-                    <td><?php echo $tabla["nombreCompleto"];?></td>
-                    <td><?php echo $tabla["cantidadAsignada"];?></td>
+$tbl_header = '<style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 20px;
+}
+tr {
+    padding: 3px 0;
+}
 
-                   
+th {
+    background-color: #CCCCCC;
+    border: 1px solid #DDDDDD;
+    color: #333333;
+    font-family: trebuchet MS;
+    font-size: 15px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-top: 5px;
+    text-align: left;
+}
+td {
+    border: 1px solid #CCCCCC;
+    font-size: 15px;
+    padding: 3px 7px 2px;
+}
+</style>
+<table width="600" cellspacing="2" cellpadding="1" border="0">
+<tr>
+        <th><font face="Arial, Helvetica, sans-serif">Fecha del ingreso</font></th>
+        <th><font face="Arial, Helvetica, sans-serif">Nombre del Empleado</font></th>
+        <th><font face="Arial, Helvetica, sans-serif">Cantidad ingresada</font></th>
+      </tr>';
+$tbl_footer = '</table>';
+$tbl = '';
 
-                </tr>
-                <?php
-            }
-            ?>
-            </tbody>
-        </table>';
+while ($tabla = mysqli_fetch_array($consultaEntrada)) {
+$tbl .= '
+    <tr>
+        <td>'.$tabla['fecha'].'</td>
+        <td>'.$tabla['nombreCompleto'].'</td>
+        <td>'.$tabla['cantidadAsignada'].'</td>
+    </tr>
+';
+}
+// output the HTML content
+
+
+
+
+
+
+
 
 // output the HTML content
 
 // print a block of text using Write()
 $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
-$pdf->writeHTML($html, true, false, true, false, '');
+$pdf->Ln();
+$pdf->writeHTML($tbl_header . $tbl . $tbl_footer, true, false, false, false, '');
 
 $pdf->AddPage();
 $pdf->Write(0, $txt2, '', 0, 'C', true, 0, false, false, 0);
