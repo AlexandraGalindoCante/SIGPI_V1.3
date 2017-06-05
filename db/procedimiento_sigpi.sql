@@ -336,6 +336,13 @@ BEGIN
     WHERE idMaterial=_idMaterial;
    
 END //
+DELIMITER //
+CREATE PROCEDURE inhabilitarMaterial(
+idMaterial int)
+BEGIN
+	UPDATE Materiales SET visibilidad = 0 WHERE idMaterial = _idMaterial;
+END //
+
 
 --Rol
 

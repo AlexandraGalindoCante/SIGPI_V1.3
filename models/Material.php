@@ -62,7 +62,19 @@ public function actulizarMaterial(){
 		or die($mysql->error);
 		$mysql = $datos->Desconectar($mysql);
 	}
+public function inhabilitarMaterial(){
 
+		$datos=new Datos();
+		$mysql= $datos->conectar();
+		$idEmpleado=$_SESSION['idEmpleado'];
+		$mysql->query(CALL inhabilitarMaterial('$this->idMaterial'))
+		$mysql = $datos->Desconectar($mysql);
+
+
+
+
+
+}
 
 
 
