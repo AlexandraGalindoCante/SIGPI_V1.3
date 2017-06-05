@@ -101,7 +101,7 @@ class Empleado extends Usuario {
 				$_SESSION['idEmpleado'] = $vectorLogin['idEmpleado'];
 				$_SESSION['empleado'] = $vectorLogin['nombreCompleto'];
 				$_SESSION['idRol'] = $vectorLogin['Rol_idRol'];
-				$_SESSION['rol'] = $vectorLogin['rol'];
+				$_SESSION['rol'] = $vectorLogin['Rol'];
 				return True;
 			}
 			else {
