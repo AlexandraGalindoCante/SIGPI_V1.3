@@ -116,8 +116,7 @@ $pdf->SetFont('times', '', 14);
 
 // add a page
 $pdf->AddPage();
-$nombre = 'Tornillo';
-$especificaciones = '6 X 3/4';
+
 
 
 if ($tabla = mysqli_fetch_array($controlador->reporteConsultaMaterial($idMaterial))){

@@ -407,3 +407,13 @@ CREATE PROCEDURE `reporteConsultaMaterial` (`_idMaterial` INT) BEGIN
     FROM Material
     WHERE idMaterial = _idMaterial;
 END$$
+
+--vista alerta orden
+
+CREATE VIEW alertaOrden 
+AS 
+SELECT pr.nombre, pr.fechaEntrega, o.cantidadRequerida, o.estado, pl.descripcion, m.referencia, m.cantidadDisponible
+FROM Proyecto AS pr INNER JOIN Plano AS pl ON pr.idProyecto = pl.Proyecto_idProyecto
+INNER JOIN Orden AS o ON o.Plano_idPlano = pl.idPlano
+INNER JOIN Material AS m ON o.Material_idMaterial = m.idMaterial  
+WHERE pl.visibilidad = 1 AND o.visibilidad = 1 AND pr.visibilidad = 1;
