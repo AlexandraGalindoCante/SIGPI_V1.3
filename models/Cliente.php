@@ -34,22 +34,22 @@ class Cliente {
 		$this->nit=$nit;
 		$this->IdCliente=$IdCliente;
 	}
-	public function registrarProveedor(){
+	public function registrarCliente(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();
-		$mysql->query("CALL registrarProveedor('$this->nombre','$this->asesor','$this->telefono','$this->correoElectronico','$this->direccion')");
+		$mysql->query("CALL registrarCliente('$this->nombre','$this->telefonoFijo','$this->telefonoCelular','$this->correoElectronico','$this->nit')");
 		$mysql = $datos->Desconectar($mysql);
 	}
-	public function actualizarProveedor(){
+	public function actualizarCliente(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();
-		$mysql->query("CALL actualizarProveedor('$this->nombre','$this->asesor','$this->telefono','$this->correoElectronico','$this->direccion','$this->idProveedor')");
+		$mysql->query("CALL actualizarCliente('$this->nombre','$this->telefonoFijo','$this->telefonoCelular','$this->correoElectronico','$this->nit','$this->idCliente')");
 		$mysql = $datos->Desconectar($mysql);
 	}
-	public function inhabilitarProveedor(){
+	public function inhabilitarCliente(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();
-		$mysql->query("CALL inhabilitarProveedor('$this->idProveedor')");
+		$mysql->query("CALL inhabilitarCliente('$this->idCliente')");
 		$mysql = $datos->Desconectar($mysql);
 	}
 }
