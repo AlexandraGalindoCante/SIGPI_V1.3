@@ -417,3 +417,43 @@ FROM Proyecto AS pr INNER JOIN Plano AS pl ON pr.idProyecto = pl.Proyecto_idProy
 INNER JOIN Orden AS o ON o.Plano_idPlano = pl.idPlano
 INNER JOIN Material AS m ON o.Material_idMaterial = m.idMaterial  
 WHERE pl.visibilidad = 1 AND o.visibilidad = 1 AND pr.visibilidad = 1;
+
+
+
+--registrarCliente
+DELIMITER //
+CREATE PROCEDURE registrarCliente(
+ _nombre VARCHAR(45),
+ _telefonoFijo VARCHAR(45),
+ _telefonoCelular VARCHAR(45),
+ _correoElectronico VARCHAR(45),
+ _nit VARCHAR(45)
+ )
+BEGIN
+    INSERT INTO cliente (nombre,telefonoFijo,telefonoCelular,correoElectronico,nit,visibilidad) 
+    VALUES(_nombre, _telefonoFijo, _telefonoCelular, _correoElectronico, _nit, 1);
+END //
+
+--actualizarCliente
+DELIMITER //
+CREATE PROCEDURE actualizarCliente(
+  _nombre VARCHAR(45),
+ _telefonoFijo VARCHAR(45),
+ _telefonoCelular VARCHAR(45),
+ _correoElectronico VARCHAR(45),
+ _nit VARCHAR(45)
+ )
+BEGIN
+    UPDATE Cliente SET nombre = _nombre, telefonoFijo = _telefonoFijo, telefonoCelular = _telefonoCelular,
+     correoElectronico = _correoElectronico, nit=_nit WHERE idCliente = _idCliente;
+END //
+
+--inhabilitarCliente
+DELIMITER //
+CREATE PROCEDURE inhabilitarCliente(
+	_idCliente int
+)	
+BEGIN
+    UPDATE Cliente SET visibilidad = 0 WHERE idCliente = _idCliente;
+END//
+
