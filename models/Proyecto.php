@@ -74,6 +74,47 @@ class Proyecto {
 		$mysql->query("CALL inhabilitarProyecto('$this->idProyecto')") or die($mysql->error);
 		$mysql = $datos->Desconectar($mysql);
 	}
+
+	public function consultarDatosProyecto(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$consulta=$mysql->query("CALL reporteEstadoProyecto('$this->idProyecto')");
+		$mysql = $datos->Desconectar($mysql);
+		return $consulta;
+	}
+
+	public function consultarEquipoProyecto(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$consulta=$mysql->query("CALL reporteEquipoProyecto('$this->idProyecto')");
+		$mysql = $datos->Desconectar($mysql);
+		return $consulta;
+	}
+
+	public function consultarPlanosProyecto(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();
+		$consulta=$mysql->query("CALL reportePlanosProyecto('$this->idProyecto')");
+		$mysql = $datos->Desconectar($mysql);
+		return $consulta;
+	}
+
+	public function contarEquipo(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();	
+		$consulta=$mysql->query("CALL conteoEquipo('$this->idProyecto')");
+		$mysql = $datos->Desconectar($mysql);
+		return $consulta;
+	}
+
+	public function contarOrdenes(){
+		$datos = new Datos();
+		$mysql = $datos->conectar();	
+		$consulta=$mysql->query("CALL conteoOrdenes('$this->idProyecto')");
+		$mysql = $datos->Desconectar($mysql);
+		return $consulta;
+	}
+
 }
 
 ?>

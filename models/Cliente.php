@@ -34,6 +34,11 @@ class Cliente {
 		$this->nit=$nit;
 		$this->IdCliente=$IdCliente;
 	}
+
+	public function getId(){
+		return $this->idCliente;
+	}
+
 	public function registrarCliente(){
 		$datos = new Datos();
 		$mysql = $datos->conectar();

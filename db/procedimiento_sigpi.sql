@@ -457,3 +457,61 @@ BEGIN
     UPDATE Cliente SET visibilidad = 0 WHERE idCliente = _idCliente;
 END//
 
+
+-- Estado del proyecto
+CREATE PROCEDURE `reporteEstadoProyecto` (`_idProyecto` INT) BEGIN 
+    SELECT pr.nombre, pr.fechaInicio, pr.fechaEntrega, pr.porcentajeAvance, ep.nombre AS estado, cl.nombre AS cliente
+    FROM EstadoProyecto AS ep INNER JOIN Proyecto AS pr ON ep.idEstadoProyecto = pr.estadoProyecto_idEstadoProyecto
+    INNER JOIN Cliente AS cl ON cl.idCliente = pr.Cliente_idCliente
+
+    WHERE pr.idProyecto = _idProyecto;
+END$$
+
+CREATE PROCEDURE `reporteEquipoProyecto` (`_idProyecto` INT) BEGIN 
+    SELECT em.nombreCompleto, ro.nombre
+    FROM Proyecto AS pr INNER JOIN EquipoTrabajo AS eq ON eq.Proyecto_idProyecto = pr.idProyecto
+    INNER JOIN Empleado AS em ON em.idEmpleado = eq.Empleado_idEmpleado
+    INNER JOIN Rol AS ro ON ro.idRol = em.Rol_idRol
+    WHERE pr.idProyecto = _idProyecto AND eq.visibilidad = 1;
+END$$
+
+
+CREATE PROCEDURE `reportePlanosProyecto` (`_idProyecto` INT) BEGIN 
+    SELECT pl.descripcion, od.estado, ma.referencia, ma.especificaciones, od.cantidadRequerida, od.cantidadConsumida
+    FROM Proyecto AS pr INNER JOIN Plano AS pl ON pl.Proyecto_idProyecto = pr.idProyecto
+    INNER JOIN Orden AS od ON od.Plano_idPlano = pl.idPlano
+    INNER JOIN Material AS ma ON od.Material_idMaterial = ma.idMaterial
+    WHERE pr.idProyecto = _idProyecto AND od.visibilidad = 1;
+END$$
+
+
+CREATE PROCEDURE `conteoEquipo` (`_idProyecto` INT) BEGIN 
+    SELECT COUNT(*) AS numero FROM EquipoTrabajo
+    WHERE Proyecto_idProyecto = _idProyecto;
+END$$
+
+CREATE PROCEDURE `conteoOrdenes` (`_idProyecto` INT) BEGIN 
+    SELECT COUNT(*) AS numero FROM Orden
+    WHERE Plano_idPlano = (SELECT idPlano FROM Plano WHERE Proyecto_idProyecto = _idProyecto);
+END$$
+
+
+/*
+Proyecto: nombre, fechaInicio, fechaEntrega, porcenjaeAvance
+EstadoProyecto: nombre
+Cliente : nombre
+Empleado: nombreCompleto
+Rol : nombre
+Plano: descripcion
+orden : estado
+material: referencia, especificaciones
+
+
+    INNER JOIN EquipoTrabajo AS eq ON eq.Proyecto_idProyecto = pr.idProyecto
+    INNER JOIN Empleado AS em ON em.idEmpleado = eq.Empleado_idEmpleado
+    INNER JOIN Rol AS ro ON ro.idRol = em.Rol_idRol
+    INNER JOIN Plano AS pl ON pl.Proyecto_idProyecto = pr.idProyecto
+    
+
+*/
+
