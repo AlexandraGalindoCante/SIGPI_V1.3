@@ -1,8 +1,8 @@
 <?php
 
 
-include ("../../models/Datos.php");
-include ("../../models/Tramite.php");
+include ("../models/Datos.php");
+include ("../models/Tramite.php");
 
 class controladorTramite{
 
@@ -11,15 +11,57 @@ class controladorTramite{
 	public function reporteEntradaMaterial($idMaterial){
 		$model = new Tramite;
 		$model->setMaterial($idMaterial);
-		$tabla = $model->buscarEntradaMaterial();
-		return $tabla;
+		$consulta = $model->buscarEntradaMaterial();
+		
+		return $consulta;
 	}
 
-	public function inhabilitar(){
-		$model = new Directorio($_REQUEST['idMaterial'],$_REQUEST['idProveedor']);
-		$model->eliminarDirectorio();
+	public function reporteSalidaMaterial($idMaterial){
+		$model = new Tramite;
+		$model->setMaterial($idMaterial);
+		$consulta = $model->buscarSalidaMaterial();
+		
+		return $consulta;
 	}
 
+	public function reporteDevolucionMaterial($idMaterial){
+		$model = new Tramite;
+		$model->setMaterial($idMaterial);
+		$consulta = $model->buscarDevolucionMaterial();
+		
+		return $consulta;
+	}
+
+	public function reporteConteoEntrada($idMaterial){
+		$model = new Tramite;
+		$model->setMaterial($idMaterial);
+		$consulta = $model->contarEntrada();
+		
+		return $consulta;
+	}
+
+	public function reporteConteoSalida($idMaterial){
+		$model = new Tramite;
+		$model->setMaterial($idMaterial);
+		$consulta = $model->contarSalida();
+		
+		return $consulta;
+	}
+
+	public function reporteConteoDevolucion($idMaterial){
+		$model = new Tramite;
+		$model->setMaterial($idMaterial);
+		$consulta = $model->contarDevolucion();
+		
+		return $consulta;
+	}
+
+	public function reporteConsultaMaterial($idMaterial){
+		$model = new Tramite;
+		$model->setMaterial($idMaterial);
+		$consulta = $model->consultarMaterial();
+		return $consulta;
+	}
 
 }
 

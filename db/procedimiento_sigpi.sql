@@ -355,8 +355,72 @@ END //
 
 
 --Consultas para reporte de materiales
+DELIMITER $$
+
+
 CREATE PROCEDURE `reporteEntradaMaterial` (`_idMaterial` INT)  BEGIN
     SELECT t.fecha, t.cantidadAsignada, e.nombreCompleto
     FROM Tramite AS t INNER JOIN Empleado AS e ON t.Empleado_idEmpleado = e.idEmpleado
     WHERE t.Material_idMaterial = _idMaterial AND t.tipo = 'Entrada';
 END$$
+
+
+CREATE PROCEDURE `conteoReporteEntradaMaterial` (`_idMaterial` INT) BEGIN 
+    SELECT COUNT(*) AS numero FROM Tramite
+    WHERE Material_idMaterial = _idMaterial AND tipo = 'Entrada';
+END$$
+
+CREATE PROCEDURE `reporteDevolucionMaterialProyecto` (`_idMaterial` INT) BEGIN 
+    SELECT t.fecha, t.cantidadAsignada, e.nombreCompleto, pl.descripcion AS plano, pr.nombre AS proyecto
+    FROM Tramite AS t INNER JOIN Empleado AS e ON t.Empleado_idEmpleado = e.idEmpleado
+    INNER JOIN Orden AS o ON o.idOrden = (SELECT idOrden FROM Orden 
+        WHERE t.cantidadAsignada = (cantidadRequerida - cantidadConsumida) AND Material_idMaterial = _idMaterial)
+    INNER JOIN Plano AS pl ON o.Plano_idPlano = pl.idPlano
+    INNER JOIN Proyecto AS pr ON pl.Proyecto_idProyecto = pr.idProyecto
+    WHERE t.Material_idMaterial = _idMaterial AND t.tipo = 'Devolucion';
+END$$
+
+CREATE PROCEDURE `reporteDevolucionMaterial` (`_idMaterial` INT) BEGIN
+    SELECT t.fecha, t.cantidadAsignada, e.nombreCompleto
+    FROM Tramite AS t INNER JOIN Empleado AS e ON t.Empleado_idEmpleado = e.idEmpleado
+    WHERE t.Material_idMaterial = _idMaterial AND t.tipo = 'Devolucion';
+END$$
+
+CREATE PROCEDURE `conteoReporteDevolucionMaterial` (`_idMaterial` INT) BEGIN 
+    SELECT COUNT(*) AS numero FROM Tramite
+    WHERE Material_idMaterial = _idMaterial AND tipo = 'Devolucion';
+END$$
+
+CREATE PROCEDURE `conteoReporteSalidaMaterial` (`_idMaterial` INT) BEGIN 
+    SELECT COUNT(*) AS numero FROM Tramite
+    WHERE Material_idMaterial = _idMaterial AND tipo = 'Salida';
+END$$
+
+
+CREATE PROCEDURE `reporteSalidaMaterial` (`_idMaterial` INT) BEGIN 
+    SELECT t.fecha, t.cantidadAsignada, e.nombreCompleto, pl.descripcion AS plano, pr.nombre AS proyecto
+    FROM Tramite AS t INNER JOIN Empleado AS e ON t.Empleado_idEmpleado = e.idEmpleado
+    INNER JOIN OrdenTramitada AS ot ON ot.Tramite_idTramite = t.idTramite
+    INNER JOIN Orden AS o ON o.idOrden = ot.Orden_idOrden
+    INNER JOIN Plano AS pl ON o.Plano_idPlano = pl.idPlano
+    INNER JOIN Proyecto AS pr ON pl.Proyecto_idProyecto = pr.idProyecto
+    WHERE t.Material_idMaterial = _idMaterial AND t.tipo = 'Salida';
+END$$
+
+
+
+CREATE PROCEDURE `reporteConsultaMaterial` (`_idMaterial` INT) BEGIN 
+    SELECT referencia, especificaciones, unidadMedida, cantidadDisponible
+    FROM Material
+    WHERE idMaterial = _idMaterial;
+END$$
+
+--vista alerta orden
+
+CREATE VIEW alertaOrden 
+AS 
+SELECT pr.nombre, pr.fechaEntrega, o.cantidadRequerida, o.estado, pl.descripcion, m.referencia, m.cantidadDisponible
+FROM Proyecto AS pr INNER JOIN Plano AS pl ON pr.idProyecto = pl.Proyecto_idProyecto
+INNER JOIN Orden AS o ON o.Plano_idPlano = pl.idPlano
+INNER JOIN Material AS m ON o.Material_idMaterial = m.idMaterial  
+WHERE pl.visibilidad = 1 AND o.visibilidad = 1 AND pr.visibilidad = 1;

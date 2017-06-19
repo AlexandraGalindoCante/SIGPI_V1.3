@@ -50,7 +50,8 @@ include ("consulta/libSigpi.php");
 <?php 
 include('modals/md_registrarMaterial.php');
 include('modals/md_modificarMaterial.php');
-include('modals/md_eliminarMaterial.php')
+include('modals/md_eliminarMaterial.php');
+include('modals/md_reporteMaterial.php');
 ?>
 
        <div id="wrapper">
@@ -154,11 +155,14 @@ include('modals/md_eliminarMaterial.php')
       <h3> Listado de Materiales</h3>
     </div>
     <div class='col-xs-6'>
-      <h3 class='text-right'>   
-        <button type="button" class="btn btn-tema btn-sm" data-toggle="modal" data-target="#registroMaterial" >
+        <h3 class='text-right'>   
+            <button type="button" class="btn btn-tema btn-sm" data-toggle="modal" data-target="#reporteMaterial" >
+            Reporte de material
+            </button>
+            <button type="button" class="btn btn-tema btn-sm" data-toggle="modal" data-target="#registroMaterial" >
             Agregar Material
-          </button>
-      </h3>
+            </button>
+        </h3>
     </div>  
     
     <div class="row">
