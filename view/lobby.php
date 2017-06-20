@@ -24,6 +24,8 @@ include ("consulta/libSigpi.php");
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/mensajes.css" rel="stylesheet">
 
+    <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
+
 
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -65,7 +67,7 @@ include('modals/md_cambiarContrasena.php');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">SIGPI</a>
+                <div class="navbar-brand" >SIGPI</div>
             </div>
             <!-- /.navbar-header -->
 
@@ -207,17 +209,7 @@ include('modals/md_cambiarContrasena.php');
 
                                  ?>
                                     <tr data-status="<?php echo $estado ?>">
-                                        <td>
-                                            <div class="ckbox">
-                                                <input type="checkbox" id="checkbox1">
-                                                <label for="checkbox1"></label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:;" class="star">
-                                                <i class="glyphicon glyphicon-star"></i>
-                                            </a>
-                                        </td>
+                                
                                         <td>
                                             <div class="media">
                                                 <div class="media-body">

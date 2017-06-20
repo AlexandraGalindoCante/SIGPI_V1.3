@@ -28,22 +28,22 @@ class Usuario {
 		$consulta=$mysql->query("CALL buscarCorreo('$this->nombreUsuario')");
 		$mysql = $datos->Desconectar($mysql);
 		$vector=mysqli_fetch_array($consulta);
-		if ($vector['usuario'] == 1){
+		if ($vector['Usuario'] == 1){
 			$datos = new Datos();
 			$mysql = $datos->conectar();	
-			$contrasena =  $this->generarContrasena();
-			$this->contrasena = '234';//Todas los cambios de contraseñas seran 234 mientras se hacen pruebas
+			$this->contrasena =  $this->generarContrasena();
+			//$this->contrasena = '234';//Todas los cambios de contraseñas seran 234 mientras se hacen pruebas
 			$enc_contrasena = password_hash($this->contrasena, PASSWORD_DEFAULT);
 			$mysql->query("CALL cambiarContrasena('$this->nombreUsuario', '$enc_contrasena')");
-			/*
+			
 				$asunto = "Sigpi- inicio";
-				$mensaje = "Usuario: ".$this->correoElectronico."\n"."Contraseña: $this->contrasena";
+				$mensaje = "Usuario: ".$this->nombreUsuario."\n"."Contraseña: $this->contrasena";
 				$cab = 'From: caflorez23@misena.edu.co' . "\n".
 				'Reply-To: remitente@dominio.com'."\n".
 				'X-Mailer: PHP/'.phpversion();
-				mail("$this->correoElectronico", $asunto, $mensaje, $cab);
+				mail("$this->nombreUsuario", $asunto, $mensaje, $cab);
 
-			*/
+			
 			$mysql = $datos->Desconectar($mysql);
 		} 
 

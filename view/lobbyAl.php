@@ -22,9 +22,11 @@ include ("consulta/libSigpi.php");
 
     <link href="../css/interfaz.css" rel="stylesheet">
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/mensajes.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
 
     <!-- Custom CSS -->
   
@@ -156,6 +158,75 @@ include('modals/md_cambiarContrasena.php');
         </div>
     </div>
 
+<?php
+    require_once("../controladores/controladorOrden.php"); 
+    $controlador = new controladorOrden;
+    $consulta = $controlador->consultarAlertaOrden();
+    
+?>
+<div class="container">
+    <div class="row">
+
+        <section class="content">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-filter" data-target="asignada">Asignada</button>
+                                <button type="button" class="btn btn-warning btn-filter" data-target="noAsignada">Sin asignar</button>
+                                <button type="button" class="btn btn-danger btn-filter" data-target="sinMaterial">Falta material</button>
+                                <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table class="table table-filter">
+                                <tbody>
+
+                                <?php 
+                                    while($tabla = mysqli_fetch_array($consulta)){
+                                        if($tabla['estado'] != "0"){
+                                            $estado = "asignada";
+                                            $nombreEstado = "Asignada";
+                                        }else if($tabla['cantidadRequerida']<=$tabla['cantidadDisponible']){
+                                            $estado = "noAsignada";
+                                            $nombreEstado = "Sin asignar";
+                                        }else{
+                                            $estado = "sinMaterial";
+                                            $nombreEstado = "Falta material";
+                                        }
+
+                                 ?>
+                                    <tr data-status="<?php echo $estado ?>">
+                                        
+                                        <td>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <span class="media-meta pull-right"> <?php echo $tabla['fechaEntrega'] ?> </span>
+                                                    <h4 class="title">
+                                                        Proyecto: <?php echo $tabla['nombre'] ?> / Plano: <?php echo $tabla['descripcion'] ?>
+                                                        <span class="pull-right <?php echo $estado ?>">(<?php echo $nombreEstado?>)</span>
+                                                    </h4>
+                                                    <p class="summary">Requiere <?php echo $tabla['referencia'] ?></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                        } //fin while
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
         </div>
         <!-- /#page-wrapper -->
 
@@ -164,6 +235,7 @@ include('modals/md_cambiarContrasena.php');
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/pruebaMensajes.js" ></script>
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>

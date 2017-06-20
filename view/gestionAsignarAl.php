@@ -27,6 +27,7 @@ include ("consulta/libSigpi.php");
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
+    <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
     <!-- Custom CSS -->
   
    
@@ -63,7 +64,7 @@ include('modals/md_eliminarOrden.php')
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">SIGPI</a>
+                <div class="navbar-brand" >SIGPI</div>
             </div>
             <!-- /.navbar-header -->
 

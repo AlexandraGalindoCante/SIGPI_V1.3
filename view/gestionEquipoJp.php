@@ -26,6 +26,7 @@ include ("consulta/libSigpi.php");
 
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
 
     <!-- Custom CSS -->
   
