@@ -55,7 +55,7 @@
                     success: function(datos){
                     $('#modificarCliente').modal('hide');
                     $('.modal-backdrop').remove();
-                    location.reload();
+                    load(1);
                     
                   }
             });
@@ -76,7 +76,7 @@
                     $('#registroCliente').modal('hide');
                     $('.modal-backdrop').remove();
 
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -96,7 +96,7 @@
                     $('#eliminarCliente').modal('hide');
                      $('.modal-backdrop').remove();
                      
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -172,7 +172,7 @@
                     $('#modificarEmpleado').modal('hide');
                     $('.modal-backdrop').remove();
                      
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -191,7 +191,7 @@
                     
                     $('#registroEmpleado').modal('hide');
                     $('.modal-backdrop').remove();
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -211,7 +211,7 @@
                     $('#eliminarEmpleado').modal('hide');
                      $('.modal-backdrop').remove();
                      
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -271,7 +271,7 @@
                     $('#modificarProyecto').modal('hide');
                 
                      $('.modal-backdrop').remove();
-                     location.reload();
+                     load(1);
 
                    
 
@@ -295,7 +295,7 @@
                     $('.modal-backdrop').remove(); 
 
                     
-                    location.reload();
+                    load(1);
 
                   }
             });
@@ -314,7 +314,7 @@
                     success: function(datos){
                     $('#eliminarProyecto').modal('hide');
                      $('.modal-backdrop').remove();
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -362,7 +362,7 @@
                      $('.modal-backdrop').remove();
                      
 
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -381,7 +381,7 @@
                     
                     $('#registroMaterial').modal('hide');
                      $('.modal-backdrop').remove();
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -401,7 +401,7 @@
                     $('#eliminarMaterial').modal('hide');
                      $('.modal-backdrop').remove();
                      
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -453,7 +453,7 @@
                      $('.modal-backdrop').remove();
                      
 
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -472,7 +472,7 @@
                     
                     $('#registroProveedor').modal('hide');
                      $('.modal-backdrop').remove();
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -492,7 +492,7 @@
                     $('#eliminarProveedor').modal('hide');
                      $('.modal-backdrop').remove();
                      
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -523,7 +523,7 @@ $( "#guardarEquipo" ).submit(function( event ) {
                     
                     $('#registroEquipo').modal('hide');
                      $('.modal-backdrop').remove();
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -554,7 +554,7 @@ $( "#guardarEquipo" ).submit(function( event ) {
                     $('#eliminarEquipo').modal('hide');
                      $('.modal-backdrop').remove();
                      
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -583,7 +583,7 @@ $( "#guardarDirectorio" ).submit(function( event ) {
                     
                     $('#registroDirectorio').modal('hide');
                      $('.modal-backdrop').remove();
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -614,7 +614,7 @@ $( "#guardarDirectorio" ).submit(function( event ) {
                     $('#eliminarDirectorio').modal('hide');
                      $('.modal-backdrop').remove();
                      
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -645,7 +645,7 @@ $( "#guardarDirectorio" ).submit(function( event ) {
                 
                 $('#registroOrden').modal('hide');
                  $('.modal-backdrop').remove();
-                location.reload();
+                load(1);
               }
         });
       event.preventDefault();
@@ -672,7 +672,7 @@ $( "#guardarDirectorio" ).submit(function( event ) {
                   $('#eliminarOrden').modal('hide');
                    $('.modal-backdrop').remove();
                    
-                  location.reload();
+                  load(1);
                 }
           });
         event.preventDefault();
@@ -713,7 +713,7 @@ $( "#guardarDirectorio" ).submit(function( event ) {
                 
                 $('#registroTramite').modal('hide');
                  $('.modal-backdrop').remove();
-                location.reload();
+                load(1);
               }
         });
       event.preventDefault();
@@ -734,7 +734,7 @@ $( "#guardarDirectorio" ).submit(function( event ) {
                     
                     $('#entradaTramite').modal('hide');
                      $('.modal-backdrop').remove();
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -772,7 +772,7 @@ $( "#guardarDirectorio" ).submit(function( event ) {
                     
                     $('#devolucion').modal('hide');
                      $('.modal-backdrop').remove();
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
@@ -793,7 +793,7 @@ $( "#guardarDirectorio" ).submit(function( event ) {
                     $('#cambiarContrasena').modal('hide');
                     $('.modal-backdrop').remove();
 
-                    location.reload();
+                    load(1);
                   }
             });
           event.preventDefault();
