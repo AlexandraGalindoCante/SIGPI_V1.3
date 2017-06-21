@@ -1,3 +1,4 @@
+
 *{
 	box-sizing: border box;
 }
@@ -43,9 +44,10 @@ body:hover{
     margin: auto;
 
     }
+    
     .panel {
     margin-bottom: 15px;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: green;
     border-radius: 60px 60px;
     box-shadow: 4px 4px; 
    
@@ -142,23 +144,24 @@ padding-top: 30px;
   margin-top: 80px;
   margin-bottom: 150px;
   box-shadow: silver 1px,1px,0,0;
+  background-color: blue
 }
 
-.form-signin {
+.form-login{
   max-width: 380px;
   padding: 15px 35px 45px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: green;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
+.form-login .form-login-heading,
+.form-login .checkbox {
   margin-bottom: 30px;
 }
-.form-signin .checkbox {
+.form-login .checkbox {
   font-weight: normal;
 }
-.form-signin .form-control {
+.form-login .form-control {
   position: relative;
   font-size: 16px;
   height: auto;
@@ -168,15 +171,15 @@ padding-top: 30px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.form-signin .form-control:focus {
+.form-login .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type="email"] {
+.form-login input[type="email"] {
   margin-bottom: -1px;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
 }
-.form-signin input[type="password"] {
+.form-login input[type="password"] {
   margin-bottom: 20px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
@@ -185,23 +188,23 @@ padding-top: 30px;
     -webkit-boxshadow: 0 0 10px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border-radius:10px;
-    -webkit-border-radius: 10px;
-    background: blue;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: silver ;
+    box-shadow: 0 0 10px black;
     color: #fff;
     display: none;
     font-size: 12px;
     margin-top: -40px;
-    margin-left: 250px;
-    padding: 10px;
+    margin-left: 200px;
+    padding: 8px;
     position: absolute;
 }
 .errores:before{ /* Este es un truco para crear una flechita */
     content: '';
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
-    border-right: 8px solid #BC1010;
+    border-right: 8px solid silver;
     border-left: 8px solid transparent;
     left: -16px;
     position: absolute;

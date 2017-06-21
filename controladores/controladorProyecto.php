@@ -18,15 +18,45 @@ class controladorProyecto{
 	}
 
 	public function inhabilitar(){
-		$empleado = new Proyecto($_REQUEST['idProyecto']);
-		$empleado->inhabilitarProyecto();
+		$model = new Proyecto($_REQUEST['idProyecto']);
+		$model->inhabilitarProyecto();
+	}
+
+	public function consultarDatosProyecto($idProyecto){
+		$model = new Proyecto($idProyecto);
+		$consulta = $model->consultarDatosProyecto();
+		return $consulta;
+	}
+
+	public function consultarEquipoProyecto($idProyecto){
+		$model = new Proyecto($idProyecto);
+		$consulta = $model->consultarEquipoProyecto();
+		return $consulta;
+	}
+
+	public function consultarPlanosProyecto($idProyecto){
+		$model = new Proyecto($idProyecto);
+		$consulta = $model->consultarPlanosProyecto();
+		return $consulta;
+	}
+
+	public function conteoEquipo($idProyecto){
+		$model = new Proyecto($idProyecto);
+		$consulta = $model->contarEquipo();
+		return $consulta;
+	}
+
+	public function conteoOrdenes($idProyecto){
+		$model = new Proyecto($idProyecto);
+		$consulta = $model->contarOrdenes();
+		return $consulta;
 	}
 }
 
 //seccion de control para determinar que funcion se debe utilizar
 
 $controlador = new controladorProyecto;
-
+$funcion = null;
 if(isset($_REQUEST['nombre']) && isset($_REQUEST['idProyecto'])){
 	$funcion = 'actualizar';
 }elseif(isset($_REQUEST['nombre'])){
@@ -36,8 +66,8 @@ if(isset($_REQUEST['nombre']) && isset($_REQUEST['idProyecto'])){
 }
 
 if(method_exists($controlador, $funcion)){
-	call_user_func(array($controlador, $funcion));
-}
+		call_user_func(array($controlador, $funcion));
+	}
 
 
 ?>

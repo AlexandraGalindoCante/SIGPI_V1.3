@@ -39,10 +39,11 @@ include ("consulta/libSigpi.php");
 <body>
 
 <?php 
-include('modals/md_registrarProyecto.php');
-include('modals/md_modificarProyecto.php');
-include('modals/md_eliminarProyecto.php');
-include('modals/md_registrarEquipo.php');
+include_once('modals/md_registrarProyecto.php');
+include_once('modals/md_modificarProyecto.php');
+include_once('modals/md_eliminarProyecto.php');
+include_once('modals/md_registrarEquipo.php');
+include_once('modals/md_reporteProyecto.php');
 ?>
 
        <div id="wrapper">
@@ -147,13 +148,16 @@ include('modals/md_registrarEquipo.php');
     <div class='col-xs-6'>  
       <h3> Listado de proyectos</h3>
     </div>
-    <div class='col-xs-6'>
-      <h3 class='text-right'>   
+<div class='col-xs-6'>
+    <h3 class='text-right'>   
+        <button type="button" class="btn btn-tema btn-sm" data-toggle="modal" data-target="#reporteProyecto" >
+            Reporte de proyecto
+        </button>
         <button type="button" class="btn btn-tema btn-sm" data-toggle="modal" data-target="#registroProyecto" >
             Nuevo proyecto
-          </button>
-      </h3>
-    </div>  
+        </button>
+    </h3>
+</div>  
     
     <div class="row">
     

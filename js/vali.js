@@ -12,8 +12,15 @@ $(document).ready(function () {
         //Secuencia de if's para verificar contenido de los inputs
  
         //Verifica que no este vacío y que sean letras
+        if(correo == ""){
+                $("#mensaje0").fadeIn("slow");
+                return false;
+            }
+
+
+
         if(correo == "" || !expr.test(correo)){
-            $("#mensaje3").fadeIn("slow"); //Muestra mensaje de error
+            $("#mensaje3").fadeIn("slow"); 
             return false;                  // con false sale de la secuencia
         }
 
@@ -23,22 +30,17 @@ $(document).ready(function () {
             }
 
  
-    });//fin click
+    });
  
-    /*Las siguientes funciones son una mejora al ejemplo anterior que mostré
-     * Si el mensaje se mostró, el usuario tenía que volver a oprimir el boton
-     * de registrar para que el error se ocultará (si era el caso).
-     *
+    /*
      *Con estas funciones de keyup, el mensaje de error se muestra y
      * se ocultará automáticamente, si el usuario escribe datos admitidos.
      * Sin necesidad de oprimir de nuevo el boton de registrar.
      *
      * La función keyup lee lo último que se ha escrito y comparamos
      * con nuestras condiciones, si cumple se quita el error.
-     *
-     * Es cuestión de analizar un poco para entenderlas
-     * Cualquier duda, comenten
-     * */
+     * 
+     */
     
  
     $("#correo").keyup(function(){
@@ -57,4 +59,4 @@ $(document).ready(function () {
  
  
  
-});//fin ready
+});

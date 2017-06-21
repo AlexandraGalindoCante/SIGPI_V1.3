@@ -3,8 +3,9 @@
     <meta charset ="utf-8">
     <title>SIGPI</title>
     <link   rel="stylesheet" type="text/css" href="css/font-awesome.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link   rel="stylesheet" type="text/css" href="css/estilos.css">
+     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    
 
     <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
    
@@ -37,12 +38,17 @@
                                 <label class="panel-login">
                                     <div class="login_result"></div>
                                 </label>
-                                <input  placeholder="Correo electronico" name="email" id="correo" class="correo" type="email" autofocus>
-                                <div id="mensaje3" class="errores"> Mail no valido</div>
-                                <input id="pass" class="pass" placeholder="Contraseña" name="password" type="password">
+                                <input  placeholder="Correo electronico" name="email" id="correo" class="form-control" type="email" autofocus>
+                                 <div id="mensaje0" class="errores"> Ingrese correo electronico</div>
+                                <div id="mensaje3" class="errores"> Correo electrónico no válido</div>
+                                <input id="pass" class="form-control" placeholder="Contraseña" name="password" type="password">
                                 <div id="mensaje2" class="errores"> Ingrese su contraseña </div>
                                 <br></br>
-                                <p id="bot"><input name="submit" type="submit" id="boton" value="Registrar" class="boton"/></p>
+
+
+                                <button type="submit" name="submit" id="boton" value="Registrar" class="btn btn-tema btn-lg btn-block pull-right" width="200">Iniciar sesion</button>
+                            
+                            
                             </fieldset>
                         </form>
                     </div>
@@ -66,4 +72,4 @@
 
 </body>
 
-</html>
+</html> 
