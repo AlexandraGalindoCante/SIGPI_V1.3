@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 <?php 
 
 require_once 'funciones/validaciones.php';
@@ -43,6 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php endforeach; ?>
      </ul>
   <?php endif; ?>
+=======
+
+
+<form id="guardarMaterial" >
+>>>>>>> 55619af47b101ed181d5c31cb0b4d2f36116403e
 
 
     <div class="modal " id="registroMaterial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

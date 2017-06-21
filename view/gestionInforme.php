@@ -3,7 +3,7 @@
 session_start();
 include ("consulta/libSigpi.php");
     if ($_SESSION['sesion']== 0 or  $_SESSION['idRol'] != 2){
-      header('Location: index.php' );
+      header('Location: ../index.php' );
     }
 ?>
 
@@ -27,6 +27,7 @@ include ("consulta/libSigpi.php");
 
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagenes/favicon.ico" type="image/x-icon">
 
     <!-- Custom CSS -->
   
