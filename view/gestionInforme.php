@@ -3,7 +3,7 @@
 session_start();
 include ("consulta/libSigpi.php");
     if ($_SESSION['sesion']== 0 or  $_SESSION['idRol'] != 2){
-      header('Location: index.php' );
+      header('Location: ../index.php' );
     }
 ?>
 
