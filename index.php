@@ -63,6 +63,7 @@
                                     <div class="login_result"></div>
                                 </label>
                                 <input class="form-control" placeholder="Correo electronico" name="email" type="email" autofocus>
+                                 <div id="mensaje3" class="errores"> Mail no valido</div>
                                 <input class="form-control" placeholder="Contraseña" name="password" type="password">
                                 <br></br>
                                 <button type="submit" class="btn btn-tema btn-lg btn-block pull-right" width="200">Iniciar sesion</button>

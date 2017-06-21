@@ -336,6 +336,13 @@ BEGIN
     WHERE idMaterial=_idMaterial;
    
 END //
+DELIMITER //
+CREATE PROCEDURE inhabilitarMaterial(
+idMaterial int)
+BEGIN
+	UPDATE Materiales SET visibilidad = 0 WHERE idMaterial = _idMaterial;
+END //
+
 
 --Rol
 
@@ -416,6 +423,9 @@ SELECT pr.nombre, pr.fechaEntrega, o.cantidadRequerida, o.estado, pl.descripcion
 FROM Proyecto AS pr INNER JOIN Plano AS pl ON pr.idProyecto = pl.Proyecto_idProyecto
 INNER JOIN Orden AS o ON o.Plano_idPlano = pl.idPlano
 INNER JOIN Material AS m ON o.Material_idMaterial = m.idMaterial  
+<<<<<<< HEAD
+WHERE pl.visibilidad = 1 AND o.visibilidad = 1 AND pr.visibilidad = 1;
+=======
 WHERE pl.visibilidad = 1 AND o.visibilidad = 1 AND pr.visibilidad = 1;
 
 
@@ -515,3 +525,4 @@ material: referencia, especificaciones
 
 */
 
+>>>>>>> c96475eb391ad43b49315cc5dd1f221e2c27de4a

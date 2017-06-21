@@ -1,7 +1,54 @@
 
+<<<<<<< HEAD
+<?php 
+
+require_once 'funciones/validaciones.php';
+$referencia=isset($POST['referencia']) ? $_POST['referencia'] : null;
+$especificaciones=isset($POST['especificaciones']) ? $_POST['especificaciones'] : null;
+$unidad=isset($POST['unidad']) ? $_POST['unidad'] : null;
+$cantidad=isset($POST['cantidad']) ? $_POST['cantidad'] : null;
+$errores=array();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if (!validaTextoRequerido($referencia)) {
+      $errores[] = 'Debe llenar el campo de especificaciones.';
+    }
+     if (!validaTextoRequerido($especificaciones)) {
+      $errores[] = 'Debe llenar el campo de especificaciones.';
+    }
+
+    $opciones_unidad = array(
+   'options' => array(
+      
+      'min_range' => 1,
+      'max_range' => 1000000000000000
+   )
+   if (!validarEntero($unidad, $opciones_unidad)) {
+      $errores[] = 'El campo edad es incorrecto.';
+    }
+     //Verifica si ha encontrado errores y de no haber redirige a la página con el mensaje de que pasó la validación.
+   if(!$errores){
+      
+      exit;
+   }
+}
+
+
+?> 
+<form id="guardarMaterial">
+    <?php if ($errores): ?>
+     <ul style="color: #f00;">
+        <?php foreach ($errores as $error): ?>
+           <li> <?php echo $error ?> </li>
+        <?php endforeach; ?>
+     </ul>
+  <?php endif; ?>
+=======
 
 
 <form id="guardarMaterial" >
+>>>>>>> 55619af47b101ed181d5c31cb0b4d2f36116403e
 
 
     <div class="modal " id="registroMaterial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -18,8 +65,8 @@
 
          
             <div class="form-group">
-              <label >Referencia: </label>
-              <input type="text" class="form-control" name="referencia" pattern="[a-zA-ZáćéįóúÿýżźñÉÓÚÑ- ]{1-20}" required>
+              <label for="referencia">Referencia:(<span id="referencia" class="requisitos <?php echo $username ?>">A-z, mínimo 4 caracteres</span>): </label>
+              <input type="text" class="form-control" tabindex="1" name="referencia" pattern="[a-zA-ZáćéįóúÿýżźñÉÓÚÑ- ]{1-20}" required>
             </div>
 
 
@@ -54,4 +101,5 @@
         </div> 
       </div> 
     </div>
+    
 </form>
