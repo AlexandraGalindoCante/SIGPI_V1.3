@@ -222,6 +222,9 @@ include('modals/md_eliminarProveedor.php')
 
   <!-- Custom Theme JavaScript -->
   <script src="../js/sb-admin-2.js"></script>
+  
+<script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
+ <script type="text/javascript" src="js/validacioneProveedor.js" ></script>
 
 
 

@@ -1,4 +1,6 @@
-<form id="guardarProveedor">
+
+
+<form id="guardarProveedor" novalidate>
 
 
     <div class="modal " id="registroProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -15,12 +17,14 @@
 
             <div class="form-group">
               <label >Nombre del proveedor: </label>
-              <input type="text" class="form-control" name="nombre" pattern="[a-z A-Z0-9]{1,25}" required>
+              <input  class="form-control" name="nombre" id="nombre" pattern="[a-z A-Z0-9]{1,25}" required>
+                 <div id="mensaje0" class="errores" >Ingrese nombre proveedor</div>
             </div>
 
             <div class="form-group">
               <label >Nombre del asesor: </label>
-              <input type="text" class="form-control"   name="asesor" pattern="[a-z A-Z]{1,50}" required>
+              <input type="text" class="form-control"   name="asesor" id="asesor" pattern="[a-z A-Z]{1,50}" required>
+               <div id="mensaje1" class="errores" >Ingrese nombre proveedor</div>
             </div>
 
             <div class="form-group">
@@ -46,7 +50,26 @@
           <div class="modal-footer">
                <button class="btn btn-tema" type="submit">Enviar </button>
                <button class="btn btn-tema" data-dismiss="modal">Cerrar</button>
+                <a href="#!" id="cl" class="modal-action waves-effect waves-green btn-flat ">Validar y Cerrar</a>
           </div>
+
+          <script>
+$(document).ready(function(){
+    $("#op").click(function(){
+      $('#modal1').openModal();
+    });
+      
+    
+    $( "#cl" ).click(function() {
+       if($("#example").val() === ""){
+         alert("Rellene todos los campos");
+       }else{
+         $('#modal1').closeModal();
+       }
+      
+    });
+  });
+</script>
 
   
 

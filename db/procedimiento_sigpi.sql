@@ -524,5 +524,3 @@ material: referencia, especificaciones
     
 
 */
-
->>>>>>> c96475eb391ad43b49315cc5dd1f221e2c27de4a

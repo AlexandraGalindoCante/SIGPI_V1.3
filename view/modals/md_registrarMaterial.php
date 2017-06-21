@@ -1,8 +1,7 @@
 
-<<<<<<< HEAD
 <?php 
 
-require_once 'funciones/validaciones.php';
+require_once 'validaciones.php';
 $referencia=isset($POST['referencia']) ? $_POST['referencia'] : null;
 $especificaciones=isset($POST['especificaciones']) ? $_POST['especificaciones'] : null;
 $unidad=isset($POST['unidad']) ? $_POST['unidad'] : null;
@@ -23,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       
       'min_range' => 1,
       'max_range' => 1000000000000000
-   )
+   ));
    if (!validarEntero($unidad, $opciones_unidad)) {
       $errores[] = 'El campo edad es incorrecto.';
     }
@@ -35,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 
+
 ?> 
 <form id="guardarMaterial">
     <?php if ($errores): ?>
@@ -44,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php endforeach; ?>
      </ul>
   <?php endif; ?>
-=======
+
 
 
 <form id="guardarMaterial" >
->>>>>>> 55619af47b101ed181d5c31cb0b4d2f36116403e
+
 
 
     <div class="modal " id="registroMaterial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
          
             <div class="form-group">
-              <label for="referencia">Referencia:(<span id="referencia" class="requisitos <?php echo $username ?>">A-z, mínimo 4 caracteres</span>): </label>
+              <label for="referencia">Referencia:(<span id="referencia" class="requisitos ">A-z, mínimo 4 caracteres</span>): </label>
               <input type="text" class="form-control" tabindex="1" name="referencia" pattern="[a-zA-ZáćéįóúÿýżźñÉÓÚÑ- ]{1-20}" required>
             </div>
 
