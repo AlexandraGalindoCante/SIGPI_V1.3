@@ -1,5 +1,5 @@
  
-<form id="recPass" action="controladores/controladorUsuario.php">
+<form id="recPass" novalidate>
  <div class="modal " id="recuperarContrasena" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -14,13 +14,13 @@
 
             <div class="form-group">
               <label >Correo electronico: </label>
-              <input type="text" class="form-control" title="Ingrese un correo electronico" name="email"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
+              <input type="text" class="form-control" title="Ingrese un correo electronico" name="email" id="correo" autofocus>
             </div>
      
           </div>
           
           <div class="modal-footer">
-               <button class="btn btn-tema" type="submit">Enviar </button>
+               <button class="btn btn-tema" type="submit" id="btnRe">Enviar </button>
                <button class="btn btn-tema" data-dismiss="modal">Cerrar</button>
           </div>
 

@@ -9,62 +9,71 @@
 
     <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
    
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
     </head>
 
     <body >
     <header>    
     <div class="jumbotron" >
-    <div class="templatemo_title"><span>SI</span>GPI</div>
-    <div class="templatemo_subtitle"><center><p><B>SISTEMA DE INFORMACION PARA </p><p>LA GESTION DE PROYECTOS</p><p> E INVENTARIOS</B></p></center></div>
-     
+        <div class="templatemo_title"><span>SI</span>GPI</div>
+        <div class="templatemo_subtitle"><center><p><B>SISTEMA DE INFORMACION PARA </p><p>LA GESTION DE PROYECTOS</p><p> E INVENTARIOS</B></p></center></div>
+    </div>
     </header>
 
     <?php
     include('view/modals/md_recuperacionContrasena.php');
     ?>
-    <div id="container">
+    <div id="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="wrapper">
+                    <div class="panel panel-default" id="panel1">
+                        <div class="panel-heading" id="panel2">                                
+                            <div class="row-fluid user-row">
+                                <img src="imagenes/logofinal4.png" class="img-responsive" alt="Conxole Admin"/>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <form method="post" action="controladores/controladorEmpleado.php" id="signup" class="form-login" >
+                                <fieldset>
+                                    <label class="panel-login">
+                                        <div class="login_result"></div>
+                                    </label>
+                                    <input  placeholder="Correo electronico" name="email" id="correo" class="form-control" type="email" autofocus>
+                                     <div id="mensaje0" class="errores"> Ingrese correo electronico</div>
+                                    <div id="mensaje3" class="errores"> Correo electrónico no válido</div>
+                                    <input id="pass" class="form-control" placeholder="Contraseña" name="password" type="password">
+                                    <div id="mensaje2" class="errores"> Ingrese su contraseña </div>
+                                    <br></br>
 
-    <div class="wrapper">
-          <div class="panel panel-default" id="panel1">
-            <div class="panel-heading" id="panel2">                                
-                <div class="row-fluid user-row">
-                    <img src="imagenes/logofinal4.png" class="img-responsive" alt="Conxole Admin"/>
+
+                                    <button type="submit" name="submit" id="boton" value="Registrar" class="btn btn-tema btn-lg btn-block pull-right" width="200">Iniciar sesion</button>
+                                  
+
+                                
+                                    
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div style="text-align: center" class="panel-footer">
+                                    <a href="#" data-toggle="modal" data-target="#recuperarContrasena" > ¿Olvidó su contraseña? </a>
+                        </div>
+                                    
+                    </div>
                 </div>
             </div>
-         <div class="panel-body">
-                        <form method="post" action="controladores/controladorEmpleado.php" id="signup" class="form-login" >
-                            <fieldset>
-                                <label class="panel-login">
-                                    <div class="login_result"></div>
-                                </label>
-                                <input  placeholder="Correo electronico" name="email" id="correo" class="form-control" type="email" autofocus>
-                                 <div id="mensaje0" class="errores"> Ingrese correo electronico</div>
-                                <div id="mensaje3" class="errores"> Correo electrónico no válido</div>
-                                <input id="pass" class="form-control" placeholder="Contraseña" name="password" type="password">
-                                <div id="mensaje2" class="errores"> Ingrese su contraseña </div>
-                                <br></br>
-
-
-                                <button type="submit" name="submit" id="boton" value="Registrar" class="btn btn-tema btn-lg btn-block pull-right" width="200">Iniciar sesion</button>
-
-                    <div style="text-align: center">
-                        <a href="#" data-toggle="modal" data-target="#recuperarContrasena" > ¿Olvidó su contraseña? </a>
-                    </div>
-                            
-                            
-                            </fieldset>
-                        </form>
-                    </div>
-
+        </div>
+                
     </div>
-    </div>
-    </div>
-    </div>
+   
     <footer >
     <div id="m-soc2">
 
     <div id="copyright"><h5>Sistema de Informaciòn para la Gestión de Proyectos e Inventarios | Todos Los Derechos Reservados | </h5><span class="fa fa-copyright"> </span> Copyright 2017 </div>
+    </div>
 
    
 
