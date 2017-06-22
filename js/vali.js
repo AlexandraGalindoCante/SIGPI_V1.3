@@ -9,20 +9,20 @@ $(document).ready(function () {
         var password = $("#pass").val();
         
  
-        //Secuencia de if's para verificar contenido de los inputs
- 
-        //Verifica que no este vacío y que sean letras
+
+
+        if(correo == "" || !expr.test(correo)){
+
         if(correo == ""){
                 $("#mensaje0").fadeIn("slow");
                 return false;
             }
 
-
-
-        if(correo == "" || !expr.test(correo)){
+        else{
             $("#mensaje3").fadeIn("slow"); 
             return false;                  // con false sale de la secuencia
         }
+    }
 
         if(password == ""){
                 $("#mensaje2").fadeIn("slow");
@@ -50,6 +50,17 @@ $(document).ready(function () {
         }
     });
 
+
+
+
+    $("#correo").keyup(function(){
+        if(expr.test($(this).val())){
+            $("#mensaje3").fadeOut();
+            return false;
+        }
+    });
+
+    
     $("#pass").keyup(function(){
         if( $(this).val() != "" ){
             $("#mensaje2").fadeOut();
