@@ -48,8 +48,6 @@ body:hover{
     #panel1 {
     margin-bottom: 15px;
    
-    border-radius: 60px 60px;
-    box-shadow: 4px 4px; 
     width: 80%;
    
 }
@@ -80,6 +78,7 @@ header{
 
 }
 .templatemo_title {
+  margin-top: 20px;
     font-size: 4em;343131;
     font-weight: bold;
     color: #b52b27;
@@ -91,10 +90,12 @@ header{
 }
 
 .templatemo_title span {
+    margin-top: 25px;
     color: #BBBBBB;
     text-shadow: black 4px -2px 2px;
 }
 .templatemo_subtitle {
+    margin-top: 25px;
     margin-left: 25px;
     font-size: 1.5em;
     text-shadow: 1px 1px black;

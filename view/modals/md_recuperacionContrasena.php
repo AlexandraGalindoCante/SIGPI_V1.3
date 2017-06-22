@@ -14,7 +14,7 @@
 
             <div class="form-group">
               <label >Correo electronico: </label>
-              <input type="text" class="form-control" title="Ingrese un correo electronico" name="email" id="correo" autofocus>
+              <input type="text" class="form-control" title="Ingrese un correo electronico" name="email" id="correoRecuperacion" autofocus>
             </div>
      
           </div>
