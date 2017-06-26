@@ -28,7 +28,7 @@ include ("libSigpi.php");
 		
 		if ($numrows>0){
 			?>
-		<table class="table table-bordered" style="color:black;">
+		<table class="table table-bordered" >
 			  <thead>
 			  	<tr>
 			    <th>Documento</th>
@@ -36,7 +36,7 @@ include ("libSigpi.php");
 			    <th>Correo</th>
 			    <th>Rol</th>
 			    <th>Telefono</th>
-			    <th>Telefono celular</th>
+			    <th>Celular</th>
 			    <th>Direccion</th>
 			    <th>Acciones</th>
 			    
@@ -55,8 +55,8 @@ include ("libSigpi.php");
 					<td><?php echo $row['telefonoCelular'];?></td>
 					<td><?php echo $row['direccion'];?></td>
 					<td>
-						<button type="button" class="btn btn-tema" data-toggle="modal" data-target="#modificarEmpleado" data-id="<?php echo $row['idEmpleado']?>" data-nombre="<?php echo $row['nombreCompleto']?>" data-fijo="<?php echo $row['telefonoFijo']?>"  data-documento="<?php echo $row['documento']?>" data-celular="<?php echo $row['telefonoCelular']?>" data-correo="<?php echo $row['correoElectronico']?>" data-direccion="<?php echo $row['direccion']?>" data-rol="<?php echo $row['idRol']?>" data-usuario="<?php echo $row['Usuario_idUsuario']?>"><i class='glyphicon glyphicon-edit'></i> Modificar</button>
-						<button type="button" class="btn btn-tema" data-toggle="modal" data-target="#eliminarEmpleado" data-id="<?php echo $row['idEmpleado']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
+						<button type="button" class="btn btn-tema" data-toggle="modal" data-target="#modificarEmpleado" data-id="<?php echo $row['idEmpleado']?>" data-nombre="<?php echo $row['nombreCompleto']?>" data-fijo="<?php echo $row['telefonoFijo']?>"  data-documento="<?php echo $row['documento']?>" data-celular="<?php echo $row['telefonoCelular']?>" data-correo="<?php echo $row['correoElectronico']?>" data-direccion="<?php echo $row['direccion']?>" data-rol="<?php echo $row['idRol']?>" data-usuario="<?php echo $row['Usuario_idUsuario']?>"><i class='glyphicon glyphicon-edit'></i> </button>
+						<button type="button" class="btn btn-tema" data-toggle="modal" data-target="#eliminarEmpleado" data-id="<?php echo $row['idEmpleado']?>"  ><i class='glyphicon glyphicon-trash'></i> </button>
 					</td>
 				</tr>
 				<?php

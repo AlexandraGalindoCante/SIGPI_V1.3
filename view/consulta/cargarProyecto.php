@@ -31,14 +31,14 @@ include ("libSigpi.php");
 		<table class="table table-bordered">
 			  <thead>
 			  	<tr>
-				    <td> Nombre del proyecto</td>
+				    <td> Proyecto</td>
 				    <td> Cliente</td>
 				    <td> Fecha de inicio</td>
 				    <td> Fecha de entrega</td>
 				    <td> Avance </td>
-				    <td> Estado del proyecto </td>
+				    <td> Estado</td>
 				    <td> Informe</td>
-				    <td> Equipo de trabajo </td>
+				    <td> Equipo</td>
 				    <td> Planos </td>  
 				    <td> Acciones </td>
 			  	</tr>
@@ -63,24 +63,24 @@ include ("libSigpi.php");
 					<td>
 						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="infProyecto" value="<?php echo $row['idproyecto'] ?>">
-						<button type="submit" class="bton btn-tema" ><i class='fa fa-book'></i> Informe</button>
+						<button type="submit" class="bton btn-tema" ><i class='fa fa-book'></i> </button>
 						</form>
 					</td>
 					<td>
 						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="idProyecto" value="<?php echo $row['idproyecto'] ?>">
-						<button type="submit" class="bton btn-tema" ><i class='fa fa-users'></i> Equipo </button>
+						<button type="submit" class="bton btn-tema" ><i class='fa fa-users'></i>  </button>
 						</form>
 					</td>
 					<td>
 						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="numProyecto" value="<?php echo $row['idproyecto'] ?>">
-						<button type="submit" class="bton btn-tema" ><i class='glyphicon glyphicon-user'></i> Planos</button>
+						<button type="submit" class="bton btn-tema" ><i class='fa fa-file-pdf-o'></i> </button>
 						</form>
 					</td>
 					<td>
-						<button type="button" class="btn btn-tema " data-toggle="modal" data-target="#modificarProyecto" id="modi" data-id="<?php echo $row['idproyecto']?>" data-nombre="<?php echo $row['nombre']?>" data-inicio="<?php echo $row['fechaInicio']?>" data-fin="<?php echo $row['fechaEntrega']?>" data-avance="<?php echo $row['porcentajeAvance']?>" data-cliente="<?php echo $row['Cliente_idCliente']?>" data-idestado="<?php echo $row['idEstadoProyecto']?>"><i class='glyphicon glyphicon-edit'></i> Modificar</button>
-						<button type="button" class="btn btn-tema" data-toggle="modal" data-target="#eliminarProyecto" data-id="<?php echo $row['idproyecto']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
+						<button type="button" class="btn btn-tema " data-toggle="modal" data-target="#modificarProyecto" id="modi" data-id="<?php echo $row['idproyecto']?>" data-nombre="<?php echo $row['nombre']?>" data-inicio="<?php echo $row['fechaInicio']?>" data-fin="<?php echo $row['fechaEntrega']?>" data-avance="<?php echo $row['porcentajeAvance']?>" data-cliente="<?php echo $row['Cliente_idCliente']?>" data-idestado="<?php echo $row['idEstadoProyecto']?>"><i class='glyphicon glyphicon-edit'></i></button>
+						<button type="button" class="btn btn-tema" data-toggle="modal" data-target="#eliminarProyecto" data-id="<?php echo $row['idproyecto']?>"  ><i class='glyphicon glyphicon-trash'></i> </button>
 					</td>
 
 				</tr>

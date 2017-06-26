@@ -31,12 +31,12 @@ include ("libSigpi.php");
 		<table class="table table-bordered">
 			  <thead>
 			  	<tr>
-				    <td> Nombre del proyecto</td>
+				    <td> Proyecto</td>
 				    <td> Cliente</td>
 				    <td> Fecha de inicio</td>
 				    <td> Fecha de entrega</td>
 				    <td> Avance </td>
-				    <td> Estado del proyecto </td>
+				    <td> Estado </td>
 				    
 				    
 				    <td> Planos </td>  
@@ -64,7 +64,7 @@ include ("libSigpi.php");
 					<td>
 						<form method="post" action="consulta/asignarSesion.php">
 						<input type="hidden" name="numProyecto" value="<?php echo $row['idproyecto'] ?>">
-						<button type="submit" class="bton btn-tema" ><i class='glyphicon glyphicon-user'></i> Planos</button>
+						<button type="submit" class="bton btn-tema" ><i class='fa fa-file-pdf-o'></i> </button>
 						</form>
 					</td>
 
