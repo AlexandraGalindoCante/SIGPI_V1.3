@@ -1,5 +1,5 @@
  
-<form id="recPass" novalidate>
+<form id="recPass" >
  <div class="modal " id="recuperarContrasena" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -14,7 +14,7 @@
 
             <div class="form-group">
               <label >Correo electronico: </label>
-              <input type="text" class="form-control" title="Ingrese un correo electronico" name="email" id="correoRecuperacion" autofocus>
+              <input type="text" class="form-control" title="Ingrese un correo electronico" name="email" id="correoRecuperacion" autofocus required>
             </div>
      
           </div>
